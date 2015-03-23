@@ -1,12 +1,12 @@
 <?php
 
-namespace perf\Form\Field\Select;
+namespace perf\Form\Field;
 
 /**
  *
  *
  */
-class Option
+class SelectOption
 {
 
     /**
@@ -68,7 +68,7 @@ class Option
      *
      *
      * @param null|string $label
-     * @return Option Fluent return.
+     * @return SelectOption Fluent return.
      */
     public function setLabel($label)
     {
@@ -90,12 +90,32 @@ class Option
     /**
      *
      *
-     * @param bool $select
-     * @return Option Fluent return.
+     * @return SelectOption Fluent return.
      */
-    public function select($select = true)
+    public function select()
     {
-        $this->selected = (bool) $select;
+        return $this->setSelected(true);
+    }
+
+    /**
+     *
+     *
+     * @return SelectOption Fluent return.
+     */
+    public function deselect()
+    {
+        return $this->setSelected(false);
+    }
+
+    /**
+     *
+     *
+     * @param bool $selected
+     * @return SelectOption Fluent return.
+     */
+    public function setSelected($selected)
+    {
+        $this->selected = (bool) $selected;
 
         return $this;
     }
@@ -103,19 +123,9 @@ class Option
     /**
      *
      *
-     * @return Option Fluent return.
-     */
-    public function deselect()
-    {
-        return $this->select(false);
-    }
-
-    /**
-     *
-     *
      * @return bool
      */
-    public function selected()
+    public function isSelected()
     {
         return $this->selected;
     }

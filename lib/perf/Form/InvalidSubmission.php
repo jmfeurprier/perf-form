@@ -1,15 +1,15 @@
 <?php
 
-namespace perf\Form\ExecutionResult;
+namespace perf\Form;
 
+use perf\Form\Error;
 use perf\Form\ErrorCollection;
-use perf\Form\ExecutionResult;
 
 /**
  *
  *
  */
-class Valid implements ExecutionResult
+class InvalidSubmission implements SubmissionOutcome
 {
 
     /**
@@ -29,12 +29,13 @@ class Valid implements ExecutionResult
     /**
      * Constructor.
      *
+     * @param Error[] $errors
      * @param {string:mixed} $values
      * @return void
      */
-    public function __construct(array $values)
+    public function __construct(array $errors, array $values)
     {
-        $this->errors = new ErrorCollection(array());
+        $this->errors = new ErrorCollection($errors);
         $this->values = $values;
     }
 
@@ -55,7 +56,7 @@ class Valid implements ExecutionResult
      */
     public function valid()
     {
-        return true;
+        return false;
     }
 
     /**

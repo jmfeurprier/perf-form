@@ -1,12 +1,12 @@
 <?php
 
-namespace perf\Form\Field\Radio;
+namespace perf\Form\Field;
 
 /**
  *
  *
  */
-class Item
+class RadioItem
 {
 
     /**
@@ -68,7 +68,7 @@ class Item
      *
      *
      * @param null|string $label
-     * @return Item Fluent return.
+     * @return RadioItem Fluent return.
      */
     public function setLabel($label)
     {
@@ -90,10 +90,30 @@ class Item
     /**
      *
      *
-     * @param bool $checked
-     * @return Item Fluent return.
+     * @return RadioItem Fluent return.
      */
-    public function check($checked = true)
+    public function check()
+    {
+        return $this->setChecked(true);
+    }
+
+    /**
+     *
+     *
+     * @return RadioItem Fluent return.
+     */
+    public function uncheck()
+    {
+        return $this->setChecked(false);
+    }
+
+    /**
+     *
+     *
+     * @param bool $checked
+     * @return RadioItem Fluent return.
+     */
+    public function setChecked($checked)
     {
         $this->checked = (bool) $checked;
 
@@ -103,19 +123,9 @@ class Item
     /**
      *
      *
-     * @return Item Fluent return.
-     */
-    public function uncheck()
-    {
-        return $this->check(false);
-    }
-
-    /**
-     *
-     *
      * @return bool
      */
-    public function checked()
+    public function isChecked()
     {
         return $this->checked;
     }

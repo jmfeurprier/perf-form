@@ -6,7 +6,7 @@ namespace perf\Form;
  *
  *
  */
-interface ExecutionResult
+interface SubmissionOutcome
 {
 
     /**

@@ -1,15 +1,14 @@
 <?php
 
-namespace perf\Form\ExecutionResult;
+namespace perf\Form;
 
 use perf\Form\ErrorCollection;
-use perf\Form\ExecutionResult;
 
 /**
  *
  *
  */
-class NotSubmitted implements ExecutionResult
+class ValidSubmission implements SubmissionOutcome
 {
 
     /**
@@ -45,7 +44,7 @@ class NotSubmitted implements ExecutionResult
      */
     public function submitted()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -55,7 +54,7 @@ class NotSubmitted implements ExecutionResult
      */
     public function valid()
     {
-        return false;
+        return true;
     }
 
     /**

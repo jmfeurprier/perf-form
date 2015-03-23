@@ -6,7 +6,7 @@ namespace perf\Form\Field;
  *
  *
  */
-class File extends Field
+class FileUploadField extends Field
 {
 
     /**
@@ -40,7 +40,7 @@ class File extends Field
      *
      *
      * @param mixed $value
-     * @return File Fluent return.
+     * @return FileUploadField Fluent return.
      * @throws \InvalidArgumentException
      */
     public function setInitialValue($value)
@@ -62,7 +62,7 @@ class File extends Field
      *
      *
      * @param string $value
-     * @return File Fluent return.
+     * @return FileUploadField Fluent return.
      */
     public function setSubmittedValue($value)
     {
@@ -98,7 +98,7 @@ class File extends Field
     /**
      *
      *
-     * @return File Fluent return.
+     * @return FileUploadField Fluent return.
      */
     public function reset()
     {

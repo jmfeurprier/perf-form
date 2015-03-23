@@ -6,21 +6,21 @@ namespace perf\Form\Field;
  *
  *
  */
-class Radio extends Field
+class RadioField extends Field
 {
 
     /**
      *
      *
-     * @var Radio\Item[]
+     * @var RadioItem[]
      */
     private $items = array();
 
     /**
      *
      *
-     * @param Radio\Item[] $items
-     * @return Radio Fluent return.
+     * @param RadioItem[] $items
+     * @return RadioField Fluent return.
      */
     public function setItems(array $items)
     {
@@ -36,10 +36,10 @@ class Radio extends Field
     /**
      *
      *
-     * @param Radio\Item $item
-     * @return Radio Fluent return.
+     * @param RadioItem $item
+     * @return RadioField Fluent return.
      */
-    public function addItem(Radio\Item $item)
+    public function addItem(RadioItem $item)
     {
         $this->items[] = $item;
 
@@ -49,7 +49,7 @@ class Radio extends Field
     /**
      *
      *
-     * @return Radio\Item[]
+     * @return RadioItem[]
      */
     public function getItems()
     {
@@ -60,7 +60,7 @@ class Radio extends Field
      *
      *
      * @param string $value
-     * @return Radio Fluent return.
+     * @return RadioField Fluent return.
      */
     public function setSubmittedValue($value)
     {
