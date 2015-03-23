@@ -1,7 +1,9 @@
 {
-	"name"    : "perf/form",
-	"type"    : "library",
-	"require" : {
+	"name"        : "perf/form",
+	"type"        : "library",
+	"license"     : "MIT",
+	"description" : "Form package from perf, the PHP Extensible and Robust Framework",
+	"require"     : {
 		"php" : ">=5.3.3"
 	},
 	"require-dev": {
