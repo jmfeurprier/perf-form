@@ -6,20 +6,20 @@ namespace perf\Form\Field;
  *
  *
  */
-class SelectOption extends Field
+class SelectField extends Field
 {
 
     /**
      *
      *
-     * @var Select\Option[]
+     * @var SelectOption[]
      */
     private $options = array();
 
     /**
      *
      *
-     * @param Select\Option[] $options
+     * @param SelectOption[] $options
      * @return Select Fluent return.
      */
     public function setOptions(array $options)
@@ -36,10 +36,10 @@ class SelectOption extends Field
     /**
      *
      *
-     * @param Select\Option $option
+     * @param SelectOption $option
      * @return Select Fluent return.
      */
-    public function addOption(Select\Option $option)
+    public function addOption(SelectOption $option)
     {
         $this->options[] = $option;
 
@@ -49,7 +49,7 @@ class SelectOption extends Field
     /**
      *
      *
-     * @return Select\Option[]
+     * @return SelectOption[]
      */
     public function getOptions()
     {
@@ -59,10 +59,38 @@ class SelectOption extends Field
     /**
      *
      *
+     * @param mixed $value
+     * @return Field Fluent return.
+     */
+    public function setInitialValue($value)
+    {
+        if (!$this->isSubmitted()) {
+            $this->selectOptionByValue($value);
+        }
+
+        return parent::setInitialValue($value);
+    }
+
+    /**
+     *
+     *
      * @param string $value
-     * @return Select Fluent return.
+     * @return Field Fluent return.
      */
     public function setSubmittedValue($value)
+    {
+        $this->selectOptionByValue($value);
+
+        return parent::setSubmittedValue($value);
+    }
+
+    /**
+     *
+     *
+     * @param string $value
+     * @return void
+     */
+    private function selectOptionByValue($value)
     {
         $selected = false;
 
@@ -75,7 +103,5 @@ class SelectOption extends Field
                 $option->deselect();
             }
         }
-
-        return parent::setSubmittedValue($value);
     }
 }

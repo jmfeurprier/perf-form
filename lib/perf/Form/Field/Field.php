@@ -138,4 +138,14 @@ abstract class Field
 
         return $this;
     }
+
+    /**
+     *
+     *
+     * @return bool
+     */
+    protected function isSubmitted()
+    {
+        return $this->submitted;
+    }
 }

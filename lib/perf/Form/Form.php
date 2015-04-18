@@ -45,7 +45,7 @@ class Form
      * @param array $submittedValues
      * @return SubmissionResult
      */
-    public function submit(array $submittedValues)
+    public function handle(array $submittedValues = array())
     {
         $this->errors = array();
 
