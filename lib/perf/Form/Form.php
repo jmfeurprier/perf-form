@@ -43,24 +43,27 @@ class Form
      *
      *
      * @param array $submittedValues
-     * @return SubmissionResult
+     * @return SubmissionOutcome
      */
-    public function handle(array $submittedValues = array())
+    public function submit(array $submittedValues = array())
     {
         $this->errors = array();
 
         if (!$this->submittable($submittedValues)) {
-            return new NotSubmitted($this->getValues());
+            return new NoSubmission($this->getValues());
         }
 
-        $values = $this->getFields()->setSubmittedValues($submittedValues)->getValues();
+        $fields = $this->getFields();
+        $fields->setSubmittedValues($submittedValues);
+
+        $values = $fields->getValues();
 
         $this->validate($values);
 
         if (count($this->errors) > 0) {
             $this->onInvalid($values);
 
-            return new InvalidValuesSubmitted($this->errors, $values);
+            return new InvalidSubmission($this->errors, $values);
         }
 
         $this->onValid($values);
@@ -94,20 +97,6 @@ class Form
     /**
      *
      *
-     * @return Fields
-     */
-    public function getFields()
-    {
-        if (!isset($this->fields)) {
-            $this->fields = new Fields();
-        }
-
-        return $this->fields;
-    }
-
-    /**
-     *
-     *
      * @param string $id
      * @return Error
      */
@@ -118,16 +107,6 @@ class Form
         $this->errors[] = $error;
 
         return $error;
-    }
-
-    /**
-     *
-     *
-     * @return int
-     */
-    protected function getErrorCount()
-    {
-        return count($this->errors);
     }
 
     /**
@@ -172,5 +151,19 @@ class Form
         $this->getFields()->reset();
 
         return $this;
+    }
+
+    /**
+     *
+     *
+     * @return Fields
+     */
+    public function getFields()
+    {
+        if (!isset($this->fields)) {
+            $this->fields = new Fields();
+        }
+
+        return $this->fields;
     }
 }

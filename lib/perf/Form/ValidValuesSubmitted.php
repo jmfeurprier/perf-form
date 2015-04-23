@@ -8,7 +8,7 @@ use perf\Form\ErrorCollection;
  *
  *
  */
-class ValidSubmission implements SubmissionOutcome
+class ValidValuesSubmitted implements SubmissionOutcome
 {
 
     /**

@@ -2,7 +2,7 @@
 	"name"        : "perf/form",
 	"type"        : "library",
 	"license"     : "MIT",
-	"description" : "Form package from perf, the PHP Extensible and Robust Framework",
+	"description" : "Allows to represent form fields and to validate submitted values.",
 	"require"     : {
 		"php" : ">=5.3.3"
 	},
