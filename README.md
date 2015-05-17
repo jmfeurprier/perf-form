@@ -1,4 +1,4 @@
-perf form
-============
+form
+====
 
-form package from perf, the PHP Extensible and Robust Framework.
+Allows to represent form fields and to validate submitted values.
