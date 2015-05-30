@@ -5,7 +5,7 @@ namespace perf\Form\Field;
 /**
  *
  */
-class TextTest extends \PHPUnit_Framework_TestCase
+class TextFieldTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -15,7 +15,7 @@ class TextTest extends \PHPUnit_Framework_TestCase
     {
         $name = 'foo';
 
-        $field = new Text($name);
+        $field = new TextField($name);
 
         $this->assertSame($name, $field->getName());
     }
@@ -28,7 +28,7 @@ class TextTest extends \PHPUnit_Framework_TestCase
         $name         = 'foo';
         $initialValue = 'bar';
 
-        $field = new Text($name);
+        $field = new TextField($name);
         $field->setInitialValue($initialValue);
 
         $this->assertSame($initialValue, $field->getValue());
@@ -43,7 +43,7 @@ class TextTest extends \PHPUnit_Framework_TestCase
         $initialValue   = 'bar';
         $submittedValue = 'baz';
 
-        $field = new Text($name);
+        $field = new TextField($name);
         $field->setInitialValue($initialValue);
         $field->setSubmittedValue($submittedValue);
 
@@ -61,7 +61,7 @@ class TextTest extends \PHPUnit_Framework_TestCase
         $filter = $this->getMock('\\perf\\Form\\Filtering\\Filter');
         $filter->expects($this->never())->method('apply');
 
-        $field = new Text($name);
+        $field = new TextField($name);
         $field->addFilter($filter);
         $field->setInitialValue($initialValue);
 
@@ -81,7 +81,7 @@ class TextTest extends \PHPUnit_Framework_TestCase
         $filter = $this->getMock('\\perf\\Form\\Filtering\\Filter');
         $filter->expects($this->atLeastOnce())->method('apply')->with($submittedValue)->will($this->returnValue($filteredValue));
 
-        $field = new Text($name);
+        $field = new TextField($name);
         $field->addFilter($filter);
         $field->setInitialValue($initialValue);
         $field->setSubmittedValue($submittedValue);

@@ -17,7 +17,7 @@
 	},
 	"autoload" : {
 		"psr-4" : {
-			"perf\\Form\\" : "lib/perf/form/"
+			"perf\\Form\\" : "lib/perf/Form/"
 		}
 	}
 }
