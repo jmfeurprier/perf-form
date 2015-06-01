@@ -15,7 +15,7 @@ class Form
     /**
      *
      *
-     * @var Fields
+     * @var FieldCollection
      */
     private $fields;
 
@@ -156,12 +156,12 @@ class Form
     /**
      *
      *
-     * @return Fields
+     * @return FieldCollection
      */
     public function getFields()
     {
         if (!isset($this->fields)) {
-            $this->fields = new Fields();
+            $this->fields = new FieldCollection();
         }
 
         return $this->fields;

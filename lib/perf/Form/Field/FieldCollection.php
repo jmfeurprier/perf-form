@@ -6,7 +6,7 @@ namespace perf\Form\Field;
  *
  *
  */
-class Fields implements \IteratorAggregate
+class FieldCollection implements \IteratorAggregate
 {
 
     /**
@@ -30,7 +30,7 @@ class Fields implements \IteratorAggregate
      *
      *
      * @param Field $field
-     * @return Fields Fluent return.
+     * @return FieldCollection Fluent return.
      */
     public function add(Field $field)
     {
@@ -70,7 +70,7 @@ class Fields implements \IteratorAggregate
      *
      *
      * @param string $name
-     * @return Fields Fluent return.
+     * @return FieldCollection Fluent return.
      */
     public function remove($name)
     {
@@ -82,7 +82,7 @@ class Fields implements \IteratorAggregate
     /**
      *
      *
-     * @return Fields Fluent return.
+     * @return FieldCollection Fluent return.
      */
     public function reset()
     {
@@ -97,7 +97,7 @@ class Fields implements \IteratorAggregate
      *
      *
      * @param unknown_type $values
-     * @return Fields Fluent return.
+     * @return FieldCollection Fluent return.
      */
     public function setInitialValues(array $values)
     {
@@ -118,7 +118,7 @@ class Fields implements \IteratorAggregate
      *
      *
      * @param unknown_type $values
-     * @return Fields Fluent return.
+     * @return FieldCollection Fluent return.
      */
     public function setSubmittedValues(array $values)
     {
