@@ -6,7 +6,7 @@ namespace perf\Form\Field;
  *
  *
  */
-class FileUploadField extends Field
+class FileUploadField extends FieldBase
 {
 
     /**

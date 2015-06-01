@@ -6,7 +6,7 @@ namespace perf\Form\Field;
  *
  *
  */
-class SelectField extends Field
+class SelectField extends FieldBase
 {
 
     /**

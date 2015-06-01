@@ -6,6 +6,6 @@ namespace perf\Form\Field;
  *
  *
  */
-class TextField extends Field
+class TextField extends FieldBase
 {
 }

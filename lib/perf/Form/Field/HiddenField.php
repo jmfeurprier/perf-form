@@ -6,6 +6,6 @@ namespace perf\Form\Field;
  *
  *
  */
-class HiddenField extends Field
+class HiddenField extends FieldBase
 {
 }

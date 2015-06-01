@@ -6,7 +6,7 @@ namespace perf\Form\Field;
  *
  *
  */
-class Checkbox extends Field
+class Checkbox extends FieldBase
 {
 
     /**

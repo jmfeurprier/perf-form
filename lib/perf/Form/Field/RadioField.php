@@ -6,7 +6,7 @@ namespace perf\Form\Field;
  *
  *
  */
-class RadioField extends Field
+class RadioField extends FieldBase
 {
 
     /**
