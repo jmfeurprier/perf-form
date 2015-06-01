@@ -71,7 +71,7 @@ class TextFieldTest extends \PHPUnit_Framework_TestCase
     /**
      *
      */
-    public function testGetValueWithSubmittedValueAndFilterDoesModifiesValue()
+    public function testGetValueWithSubmittedValueAndFilterModifiesValue()
     {
         $name           = 'foo';
         $initialValue   = 'bar';
@@ -87,5 +87,22 @@ class TextFieldTest extends \PHPUnit_Framework_TestCase
         $field->setSubmittedValue($submittedValue);
 
         $this->assertSame($filteredValue, $field->getValue());
+    }
+
+    /**
+     *
+     */
+    public function testResetReAssignsInitialValue()
+    {
+        $name           = 'foo';
+        $initialValue   = 'bar';
+        $submittedValue = 'baz';
+
+        $field = new TextField($name);
+        $field->setInitialValue($initialValue);
+        $field->setSubmittedValue($submittedValue);
+        $field->reset();
+
+        $this->assertSame($initialValue, $field->getValue());
     }
 }
