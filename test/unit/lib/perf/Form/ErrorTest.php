@@ -45,4 +45,30 @@ class ErrorTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame($message, $error->getMessage());
     }
+
+    /**
+     *
+     */
+    public function testGetFieldNameReturnsNull()
+    {
+        $id = 'foo';
+
+        $error = new Error($id);
+
+        $this->assertNull($error->getFieldName());
+    }
+
+    /**
+     *
+     */
+    public function testGetFieldNameReturnsExpected()
+    {
+        $id        = 'foo';
+        $fieldName = 'bar';
+
+        $error = new Error($id);
+        $error->setFieldName($fieldName);
+
+        $this->assertSame($fieldName, $error->getFieldName());
+    }
 }
