@@ -11,6 +11,29 @@ class ErrorTest extends \PHPUnit_Framework_TestCase
     /**
      *
      */
+    public static function dataProviderInvalidId()
+    {
+        return array(
+            array(null),
+            array(123),
+            array(''),
+            array(array('foo')),
+        );
+    }
+
+    /**
+     *
+     * @dataProvider dataProviderInvalidId
+     * @expectedException \InvalidArgumentException
+     */
+    public function testWithInvalidIdWillThrowException($id)
+    {
+        new Error($id);
+    }
+
+    /**
+     *
+     */
     public function testGetId()
     {
         $id = 'foo';
@@ -49,6 +72,32 @@ class ErrorTest extends \PHPUnit_Framework_TestCase
     /**
      *
      */
+    public static function dataProviderInvalidMessage()
+    {
+        return array(
+            array(123),
+            array(array('foo')),
+        );
+    }
+
+    /**
+     *
+     * @dataProvider dataProviderInvalidMessage
+     */
+    public function testWithInvalidMessageWillThrowException($message)
+    {
+        $id = 'foo';
+
+        $error = new Error($id);
+
+        $this->setExpectedException('\\InvalidArgumentException');
+
+        $error->setMessage($message);
+    }
+
+    /**
+     *
+     */
     public function testGetFieldNameReturnsNull()
     {
         $id = 'foo';
@@ -70,5 +119,31 @@ class ErrorTest extends \PHPUnit_Framework_TestCase
         $error->setFieldName($fieldName);
 
         $this->assertSame($fieldName, $error->getFieldName());
+    }
+
+    /**
+     *
+     */
+    public static function dataProviderInvalidFieldName()
+    {
+        return array(
+            array(123),
+            array(array('foo')),
+        );
+    }
+
+    /**
+     *
+     * @dataProvider dataProviderInvalidFieldName
+     */
+    public function testWithInvalidFieldNameWillThrowException($fieldName)
+    {
+        $id = 'foo';
+
+        $error = new Error($id);
+
+        $this->setExpectedException('\\InvalidArgumentException');
+
+        $error->setFieldName($fieldName);
     }
 }
