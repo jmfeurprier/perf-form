@@ -6,7 +6,7 @@ namespace perf\Form\Field;
  *
  *
  */
-class Checkbox extends FieldBase
+class CheckboxField extends FieldBase
 {
 
     /**
@@ -52,7 +52,7 @@ class Checkbox extends FieldBase
      *
      *
      * @param string $value
-     * @return Checkbox
+     * @return CheckboxField Fluent return.
      */
     public function setCheckedValue($value)
     {
@@ -65,7 +65,7 @@ class Checkbox extends FieldBase
      *
      *
      * @param string $value
-     * @return Checkbox
+     * @return CheckboxField Fluent return.
      */
     public function setUncheckedValue($value)
     {
@@ -97,7 +97,7 @@ class Checkbox extends FieldBase
     /**
      *
      *
-     * @return Checkbox
+     * @return CheckboxField Fluent return.
      */
     public function uncheck()
     {
@@ -108,7 +108,7 @@ class Checkbox extends FieldBase
      *
      *
      * @param bool $checked
-     * @return Checkbox Fluent return.
+     * @return CheckboxField Fluent return.
      */
     public function check($checked = true)
     {
@@ -145,7 +145,7 @@ class Checkbox extends FieldBase
      *
      *
      * @param null|string $label
-     * @return Checkbox Fluent return.
+     * @return CheckboxField Fluent return.
      */
     public function setLabel($label)
     {
