@@ -149,7 +149,7 @@ class CheckboxField extends FieldBase
      */
     public function setLabel($label)
     {
-        $this->label = is_null($label)
+        $this->label = (null === $label)
                      ? null
                      : (string) $label;
 
