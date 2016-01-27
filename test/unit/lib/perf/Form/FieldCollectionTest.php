@@ -1,6 +1,6 @@
 <?php
 
-namespace perf\Form\Field;
+namespace perf\Form;
 
 /**
  *
@@ -33,7 +33,7 @@ class FieldCollectionTest extends \PHPUnit_Framework_TestCase
     {
         $name = 'foo';
 
-        $field = $this->getMock('\\perf\\Form\\Field\\Field');
+        $field = $this->getMockBuilder('perf\\Form\\Field')->disableOriginalConstructor()->getMock();
         $field->expects($this->atLeastOnce())->method('getName')->will($this->returnValue($name));
 
         $this->collection->add($field);
@@ -59,7 +59,7 @@ class FieldCollectionTest extends \PHPUnit_Framework_TestCase
     {
         $name = 'foo';
 
-        $field = $this->getMock('\\perf\\Form\\Field\\Field');
+        $field = $this->getMockBuilder('perf\\Form\\Field')->disableOriginalConstructor()->getMock();
         $field->expects($this->atLeastOnce())->method('getName')->will($this->returnValue($name));
 
         $this->collection->add($field);

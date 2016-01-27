@@ -2,4 +2,5 @@
 
 $rootPath = realpath(__DIR__ . '/../..') . '/';
 
-require($rootPath . 'vendor/autoload.php');
+$loader = require($rootPath . 'vendor/autoload.php');
+$loader->addPsr4('', __DIR__ . '/lib', false);

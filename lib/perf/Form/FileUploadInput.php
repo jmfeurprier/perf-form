@@ -1,13 +1,15 @@
 <?php
 
-namespace perf\Form\Field;
+namespace perf\Form;
 
 /**
  *
  *
  */
-class FileUploadField extends FieldBase
+class FileUploadInput extends Field
 {
+
+    const FIELD_TYPE_ID = 'input.file';
 
     /**
      *
@@ -40,7 +42,7 @@ class FileUploadField extends FieldBase
      *
      *
      * @param mixed $value
-     * @return FileUploadField Fluent return.
+     * @return FileUploadInput Fluent return.
      * @throws \InvalidArgumentException
      */
     public function setInitialValue($value)
@@ -62,7 +64,7 @@ class FileUploadField extends FieldBase
      *
      *
      * @param string $value
-     * @return FileUploadField Fluent return.
+     * @return FileUploadInput Fluent return.
      */
     public function setSubmittedValue($value)
     {
@@ -98,7 +100,7 @@ class FileUploadField extends FieldBase
     /**
      *
      *
-     * @return FileUploadField Fluent return.
+     * @return FileUploadInput Fluent return.
      */
     public function reset()
     {

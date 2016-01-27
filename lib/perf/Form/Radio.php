@@ -1,20 +1,35 @@
 <?php
 
-namespace perf\Form\Field;
+namespace perf\Form;
 
 /**
  *
  *
  */
-class RadioField extends FieldBase
+class Radio extends Field
 {
+
+    const FIELD_TYPE_ID = 'input.radio';
 
     /**
      *
      *
-     * @var RadioItem[]
+     * @var RadioItemCollection
      */
-    private $items = array();
+    private $items;
+
+    /**
+     * Constructor.
+     *
+     * @param string $name
+     * @return void
+     */
+    public function __construct($name)
+    {
+        parent::__construct($name);
+
+        $this->items = new RadioItemCollection();
+    }
 
     /**
      *
@@ -24,11 +39,8 @@ class RadioField extends FieldBase
      */
     public function setItems(array $items)
     {
-        $this->items = array();
-
-        foreach ($items as $item) {
-            $this->addItem($item);
-        }
+        $this->items->removeAll();
+        $this->items->setMany($items);
 
         return $this;
     }
@@ -41,7 +53,7 @@ class RadioField extends FieldBase
      */
     public function addItem(RadioItem $item)
     {
-        $this->items[] = $item;
+        $this->items->addOne($item);
 
         return $this;
     }
@@ -49,11 +61,14 @@ class RadioField extends FieldBase
     /**
      *
      *
-     * @return RadioItem[]
+     * @param RadioItem[] $items
+     * @return RadioField Fluent return.
      */
-    public function getItems()
+    public function addItems(array $items)
     {
-        return $this->items;
+        $this->items->addMany($items);
+
+        return $this;
     }
 
     /**
@@ -65,7 +80,7 @@ class RadioField extends FieldBase
     public function setInitialValue($value)
     {
         if (!$this->isSubmitted()) {
-            $this->checkItemByValue($value);
+            $this->items->checkByValue($value);
         }
 
         return parent::setInitialValue($value);
@@ -79,7 +94,7 @@ class RadioField extends FieldBase
      */
     public function setSubmittedValue($value)
     {
-        $this->checkItemByValue($value);
+        $this->items->checkByValue($value);
 
         return parent::setSubmittedValue($value);
     }
@@ -87,21 +102,10 @@ class RadioField extends FieldBase
     /**
      *
      *
-     * @param string $value
-     * @return void
+     * @return RadioItem[]
      */
-    private function checkItemByValue($value)
+    public function getItems()
     {
-        $checked = false;
-
-        foreach ($this->getItems() as $item) {
-            // If many radio items share the same value, check only the first matched one.
-            if (($item->getValue() === $value) && !$checked) {
-                $item->check();
-                $checked = true;
-            } else {
-                $item->uncheck();
-            }
-        }
+        return $this->items->toArray();
     }
 }

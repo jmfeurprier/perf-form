@@ -1,6 +1,6 @@
 <?php
 
-namespace perf\Form\Field;
+namespace perf\Form;
 
 /**
  *
@@ -96,7 +96,7 @@ class FieldCollection implements \IteratorAggregate
     /**
      *
      *
-     * @param unknown_type $values
+     * @param {string:mixed} $values
      * @return FieldCollection Fluent return.
      */
     public function setInitialValues(array $values)
@@ -117,7 +117,7 @@ class FieldCollection implements \IteratorAggregate
     /**
      *
      *
-     * @param unknown_type $values
+     * @param {string:mixed} $values
      * @return FieldCollection Fluent return.
      */
     public function setSubmittedValues(array $values)
@@ -138,7 +138,7 @@ class FieldCollection implements \IteratorAggregate
     /**
      *
      *
-     * @return mixed[]
+     * @return {string:mixed}
      */
     public function getValues()
     {

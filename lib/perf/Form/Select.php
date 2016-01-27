@@ -1,20 +1,35 @@
 <?php
 
-namespace perf\Form\Field;
+namespace perf\Form;
 
 /**
  *
  *
  */
-class SelectField extends FieldBase
+class Select extends Field
 {
+
+    const FIELD_TYPE_ID = 'select';
 
     /**
      *
      *
-     * @var SelectOption[]
+     * @var SelectOptionCollection
      */
-    private $options = array();
+    private $options;
+
+    /**
+     * Constructor.
+     *
+     * @param string $name
+     * @return void
+     */
+    public function __construct($name)
+    {
+        parent::__construct($name);
+
+        $this->options = new SelectOptionCollection();
+    }
 
     /**
      *
@@ -24,11 +39,8 @@ class SelectField extends FieldBase
      */
     public function setOptions(array $options)
     {
-        $this->options = array();
-
-        foreach ($options as $option) {
-            $this->addOption($option);
-        }
+        $this->options->removeAll();
+        $this->options->setMany($options);
 
         return $this;
     }
@@ -41,7 +53,7 @@ class SelectField extends FieldBase
      */
     public function addOption(SelectOption $option)
     {
-        $this->options[] = $option;
+        $this->options->addOne($option);
 
         return $this;
     }
@@ -49,11 +61,14 @@ class SelectField extends FieldBase
     /**
      *
      *
-     * @return SelectOption[]
+     * @param SelectOption[] $options
+     * @return Select Fluent return.
      */
-    public function getOptions()
+    public function addOptions(array $options)
     {
-        return $this->options;
+        $this->options->addMany($options);
+
+        return $this;
     }
 
     /**
@@ -65,7 +80,7 @@ class SelectField extends FieldBase
     public function setInitialValue($value)
     {
         if (!$this->isSubmitted()) {
-            $this->selectOptionByValue($value);
+            $this->options->selectOptionByValue($value);
         }
 
         return parent::setInitialValue($value);
@@ -79,7 +94,7 @@ class SelectField extends FieldBase
      */
     public function setSubmittedValue($value)
     {
-        $this->selectOptionByValue($value);
+        $this->options->selectOptionByValue($value);
 
         return parent::setSubmittedValue($value);
     }
@@ -87,21 +102,10 @@ class SelectField extends FieldBase
     /**
      *
      *
-     * @param string $value
-     * @return void
+     * @return SelectOption[]
      */
-    private function selectOptionByValue($value)
+    public function getOptions()
     {
-        $selected = false;
-
-        foreach ($this->getOptions() as $option) {
-            // If many select options share the same value, select only the first matched one.
-            if (($option->getValue() === $value) && !$selected) {
-                $option->select();
-                $selected = true;
-            } else {
-                $option->deselect();
-            }
-        }
+        return $this->options->toArray();
     }
 }

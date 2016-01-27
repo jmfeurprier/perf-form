@@ -1,12 +1,12 @@
 <?php
 
-namespace perf\Form\Field;
+namespace perf\Form;
 
 /**
  *
  *
  */
-class RadioItem
+class SelectOption
 {
 
     /**
@@ -28,7 +28,7 @@ class RadioItem
      *
      * @var bool
      */
-    private $checked = false;
+    private $selected = false;
 
     /**
      * Constructor.
@@ -68,7 +68,7 @@ class RadioItem
      *
      *
      * @param null|string $label
-     * @return RadioItem Fluent return.
+     * @return SelectOption Fluent return.
      */
     public function setLabel($label)
     {
@@ -90,32 +90,32 @@ class RadioItem
     /**
      *
      *
-     * @return RadioItem Fluent return.
+     * @return SelectOption Fluent return.
      */
-    public function check()
+    public function select()
     {
-        return $this->setChecked(true);
+        return $this->setSelected(true);
     }
 
     /**
      *
      *
-     * @return RadioItem Fluent return.
+     * @return SelectOption Fluent return.
      */
-    public function uncheck()
+    public function deselect()
     {
-        return $this->setChecked(false);
+        return $this->setSelected(false);
     }
 
     /**
      *
      *
-     * @param bool $checked
-     * @return RadioItem Fluent return.
+     * @param bool $selected
+     * @return SelectOption Fluent return.
      */
-    public function setChecked($checked)
+    public function setSelected($selected)
     {
-        $this->checked = (bool) $checked;
+        $this->selected = (bool) $selected;
 
         return $this;
     }
@@ -125,8 +125,8 @@ class RadioItem
      *
      * @return bool
      */
-    public function isChecked()
+    public function isSelected()
     {
-        return $this->checked;
+        return $this->selected;
     }
 }

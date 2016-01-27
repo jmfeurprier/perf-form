@@ -15,6 +15,27 @@ class Form
     /**
      *
      *
+     * @var string
+     */
+    private $method = 'post';
+
+    /**
+     *
+     *
+     * @var string
+     */
+    private $action = '';
+
+    /**
+     *
+     *
+     * @var AttributeCollection
+     */
+    private $attributes;
+
+    /**
+     *
+     *
      * @var FieldCollection
      */
     private $fields;
@@ -25,6 +46,32 @@ class Form
      * @var Error[]
      */
     private $errors = array();
+
+    /**
+     *
+     *
+     * @param string $method
+     * @return Form Fluent return.
+     */
+    public function setMethod($method)
+    {
+        $this->method = $method;
+
+        return $this;
+    }
+
+    /**
+     *
+     *
+     * @param string $action
+     * @return Form Fluent return.
+     */
+    public function setAction($action)
+    {
+        $this->action = $action;
+
+        return $this;
+    }
 
     /**
      *
@@ -134,6 +181,41 @@ class Form
     /**
      *
      *
+     * @return string
+     */
+    public function getMethod()
+    {
+        return $this->method;
+    }
+
+    /**
+     *
+     *
+     * @return string
+     */
+    public function getAction()
+    {
+        return $this->action;
+    }
+
+    /**
+     *
+     * Lazy getter.
+     *
+     * @return AttributeCollection
+     */
+    public function getAttributes()
+    {
+        if (!isset($this->attributes)) {
+            $this->attributes = new AttributeCollection();
+        }
+
+        return $this->attributes;
+    }
+
+    /**
+     *
+     *
      * @return {string:mixed}
      */
     public function getValues()
@@ -155,6 +237,7 @@ class Form
 
     /**
      *
+     * Lazy getter.
      *
      * @return FieldCollection
      */

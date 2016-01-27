@@ -1,6 +1,6 @@
 <?php
 
-namespace perf\Form\Field;
+namespace perf\Form;
 
 use perf\Form\Filtering\Filter;
 
@@ -8,7 +8,7 @@ use perf\Form\Filtering\Filter;
  *
  *
  */
-abstract class FieldBase implements Field
+abstract class Field
 {
 
     /**
@@ -47,6 +47,20 @@ abstract class FieldBase implements Field
     private $filters = array();
 
     /**
+     *
+     *
+     * @var string
+     */
+    private $label = '';
+
+    /**
+     *
+     *
+     * @var AttributeCollection
+     */
+    private $attributes;
+
+    /**
      * Constructor.
      * To be called by subclasses.
      *
@@ -56,6 +70,8 @@ abstract class FieldBase implements Field
     public function __construct($name)
     {
         $this->name = (string) $name;
+
+        $this->attributes = new AttributeCollection();
     }
 
     /**
@@ -105,6 +121,19 @@ abstract class FieldBase implements Field
     /**
      *
      *
+     * @param string $label
+     * @return Field Fluent return.
+     */
+    public function setLabel($label)
+    {
+        $this->label = $label;
+
+        return $this;
+    }
+
+    /**
+     *
+     *
      * @return string
      */
     public function getName()
@@ -147,5 +176,35 @@ abstract class FieldBase implements Field
     protected function isSubmitted()
     {
         return $this->submitted;
+    }
+
+    /**
+     *
+     *
+     * @return string
+     */
+    public function getFieldTypeId()
+    {
+        return static::FIELD_TYPE_ID; // @xxx
+    }
+
+    /**
+     *
+     *
+     * @return string
+     */
+    public function getLabel()
+    {
+        return $this->label;
+    }
+
+    /**
+     *
+     *
+     * @return AttributeCollection
+     */
+    public function getAttributes()
+    {
+        return $this->attributes;
     }
 }

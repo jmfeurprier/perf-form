@@ -1,11 +1,11 @@
 <?php
 
-namespace perf\Form\Field;
+namespace perf\Form;
 
 /**
  *
  */
-class TextFieldTest extends \PHPUnit_Framework_TestCase
+abstract class FieldTestBase extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -15,7 +15,7 @@ class TextFieldTest extends \PHPUnit_Framework_TestCase
     {
         $name = 'foo';
 
-        $field = new TextField($name);
+        $field = $this->createField($name);
 
         $this->assertSame($name, $field->getName());
     }
@@ -28,7 +28,7 @@ class TextFieldTest extends \PHPUnit_Framework_TestCase
         $name         = 'foo';
         $initialValue = 'bar';
 
-        $field = new TextField($name);
+        $field = $this->createField($name);
         $field->setInitialValue($initialValue);
 
         $this->assertSame($initialValue, $field->getValue());
@@ -43,7 +43,7 @@ class TextFieldTest extends \PHPUnit_Framework_TestCase
         $initialValue   = 'bar';
         $submittedValue = 'baz';
 
-        $field = new TextField($name);
+        $field = $this->createField($name);
         $field->setInitialValue($initialValue);
         $field->setSubmittedValue($submittedValue);
 
@@ -58,10 +58,10 @@ class TextFieldTest extends \PHPUnit_Framework_TestCase
         $name         = 'foo';
         $initialValue = 'bar';
 
-        $filter = $this->getMock('\\perf\\Form\\Filtering\\Filter');
+        $filter = $this->getMock('perf\\Form\\Filtering\\Filter');
         $filter->expects($this->never())->method('apply');
 
-        $field = new TextField($name);
+        $field = $this->createField($name);
         $field->addFilter($filter);
         $field->setInitialValue($initialValue);
 
@@ -78,10 +78,10 @@ class TextFieldTest extends \PHPUnit_Framework_TestCase
         $submittedValue = 'baz';
         $filteredValue  = 'qux';
 
-        $filter = $this->getMock('\\perf\\Form\\Filtering\\Filter');
+        $filter = $this->getMock('perf\\Form\\Filtering\\Filter');
         $filter->expects($this->atLeastOnce())->method('apply')->with($submittedValue)->will($this->returnValue($filteredValue));
 
-        $field = new TextField($name);
+        $field = $this->createField($name);
         $field->addFilter($filter);
         $field->setInitialValue($initialValue);
         $field->setSubmittedValue($submittedValue);
@@ -98,11 +98,28 @@ class TextFieldTest extends \PHPUnit_Framework_TestCase
         $initialValue   = 'bar';
         $submittedValue = 'baz';
 
-        $field = new TextField($name);
+        $field = $this->createField($name);
         $field->setInitialValue($initialValue);
         $field->setSubmittedValue($submittedValue);
         $field->reset();
 
         $this->assertSame($initialValue, $field->getValue());
     }
+
+    /**
+     *
+     */
+    public function testGetFieldTypeId()
+    {
+        $name = 'foo';
+
+        $field = $this->createField($name);
+
+        $this->assertSame(TextInput::FIELD_TYPE_ID, $field->getFieldTypeId());
+    }
+
+    /**
+     *
+     */
+    abstract protected function createField($name);
 }

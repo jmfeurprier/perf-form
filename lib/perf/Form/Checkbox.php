@@ -1,14 +1,15 @@
 <?php
 
-namespace perf\Form\Field;
+namespace perf\Form;
 
 /**
  *
  *
  */
-class CheckboxField extends FieldBase
+class Checkbox extends Field
 {
 
+    const FIELD_TYPE_ID = 'input.checkbox';
     /**
      *
      *
