@@ -199,7 +199,7 @@ abstract class Field
      */
     public function getFieldTypeId()
     {
-        return static::FIELD_TYPE_ID; // @xxx
+        return static::FIELD_TYPE_ID;
     }
 
     /**
