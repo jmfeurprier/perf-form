@@ -2,9 +2,6 @@
 
 namespace perf\Form;
 
-use perf\Form\Field\Field;
-use perf\Form\Field\FieldCollection;
-
 /**
  *
  *
