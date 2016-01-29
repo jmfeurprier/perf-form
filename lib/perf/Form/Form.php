@@ -89,6 +89,20 @@ class Form
     /**
      *
      *
+     * @param string $key
+     * @param mixed $value
+     * @return Form Fluent return.
+     */
+    public function setAttribute($key, $value)
+    {
+        $this->getAttributes()->set($key, $value);
+
+        return $this;
+    }
+
+    /**
+     *
+     *
      * @param array $submittedValues
      * @return SubmissionOutcome
      */
@@ -200,21 +214,6 @@ class Form
 
     /**
      *
-     * Lazy getter.
-     *
-     * @return AttributeCollection
-     */
-    public function getAttributes()
-    {
-        if (!isset($this->attributes)) {
-            $this->attributes = new AttributeCollection();
-        }
-
-        return $this->attributes;
-    }
-
-    /**
-     *
      *
      * @return {string:mixed}
      */
@@ -248,5 +247,42 @@ class Form
         }
 
         return $this->fields;
+    }
+
+    /**
+     *
+     *
+     * @param string $name
+     * @return bool
+     */
+    public function hasAttribute($name)
+    {
+        return $this->getAttributes()->has($name);
+    }
+
+    /**
+     *
+     *
+     * @param string $name
+     * @return mixed
+     */
+    public function getAttribute($name)
+    {
+        return $this->getAttributes()->get($name);
+    }
+
+    /**
+     *
+     * Lazy getter.
+     *
+     * @return AttributeCollection
+     */
+    public function getAttributes()
+    {
+        if (!isset($this->attributes)) {
+            $this->attributes = new AttributeCollection();
+        }
+
+        return $this->attributes;
     }
 }

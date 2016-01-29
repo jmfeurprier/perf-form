@@ -108,6 +108,19 @@ abstract class Field
     /**
      *
      *
+     * @return Field Fluent return.
+     */
+    public function reset()
+    {
+        $this->submittedValue = null;
+        $this->submitted      = false;
+
+        return $this;
+    }
+
+    /**
+     *
+     *
      * @param Filter $filter
      * @return Field Fluent return.
      */
@@ -134,6 +147,20 @@ abstract class Field
     /**
      *
      *
+     * @param string $key
+     * @param mixed $value
+     * @return Field Fluent return.
+     */
+    public function setAttribute($key, $value)
+    {
+        $this->attributes->set($key, $value);
+
+        return $this;
+    }
+
+    /**
+     *
+     *
      * @return string
      */
     public function getName()
@@ -153,19 +180,6 @@ abstract class Field
         }
 
         return $this->initialValue;
-    }
-
-    /**
-     *
-     *
-     * @return Field Fluent return.
-     */
-    public function reset()
-    {
-        $this->submittedValue = null;
-        $this->submitted      = false;
-
-        return $this;
     }
 
     /**
@@ -201,10 +215,32 @@ abstract class Field
     /**
      *
      *
-     * @return AttributeCollection
+     * @param string $name
+     * @return bool
+     */
+    public function hasAttribute($name)
+    {
+        return $this->attributes->has($name);
+    }
+
+    /**
+     *
+     *
+     * @param string $name
+     * @return mixed
+     */
+    public function getAttribute($name)
+    {
+        return $this->attributes->get($name);
+    }
+
+    /**
+     *
+     *
+     * @return {string:mixed}
      */
     public function getAttributes()
     {
-        return $this->attributes;
+        return $this->attributes->toArray();
     }
 }

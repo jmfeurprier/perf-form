@@ -35,7 +35,7 @@ class Radio extends Field
      *
      *
      * @param RadioItem[] $items
-     * @return RadioField Fluent return.
+     * @return Radio Fluent return.
      */
     public function setItems(array $items)
     {
@@ -49,7 +49,7 @@ class Radio extends Field
      *
      *
      * @param RadioItem $item
-     * @return RadioField Fluent return.
+     * @return Radio Fluent return.
      */
     public function addItem(RadioItem $item)
     {
@@ -62,7 +62,7 @@ class Radio extends Field
      *
      *
      * @param RadioItem[] $items
-     * @return RadioField Fluent return.
+     * @return Radio Fluent return.
      */
     public function addItems(array $items)
     {

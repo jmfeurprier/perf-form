@@ -25,13 +25,6 @@ class Checkbox extends Field
     private $uncheckedValue = '0';
 
     /**
-     *
-     *
-     * @var null|string
-     */
-    private $label;
-
-    /**
      * Constructor.
      *
      * @param string $name
@@ -53,7 +46,7 @@ class Checkbox extends Field
      *
      *
      * @param string $value
-     * @return CheckboxField Fluent return.
+     * @return Checkbox Fluent return.
      */
     public function setCheckedValue($value)
     {
@@ -66,7 +59,7 @@ class Checkbox extends Field
      *
      *
      * @param string $value
-     * @return CheckboxField Fluent return.
+     * @return Checkbox Fluent return.
      */
     public function setUncheckedValue($value)
     {
@@ -98,7 +91,7 @@ class Checkbox extends Field
     /**
      *
      *
-     * @return CheckboxField Fluent return.
+     * @return Checkbox Fluent return.
      */
     public function uncheck()
     {
@@ -109,7 +102,7 @@ class Checkbox extends Field
      *
      *
      * @param bool $checked
-     * @return CheckboxField Fluent return.
+     * @return Checkbox Fluent return.
      */
     public function check($checked = true)
     {
@@ -140,30 +133,5 @@ class Checkbox extends Field
     public function getUncheckedValue()
     {
         return $this->uncheckedValue;
-    }
-
-    /**
-     *
-     *
-     * @param null|string $label
-     * @return CheckboxField Fluent return.
-     */
-    public function setLabel($label)
-    {
-        $this->label = (null === $label)
-                     ? null
-                     : (string) $label;
-
-        return $this;
-    }
-
-    /**
-     *
-     *
-     * @return null|string
-     */
-    public function getLabel()
-    {
-        return $this->label;
     }
 }
