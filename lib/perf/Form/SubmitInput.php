@@ -6,10 +6,10 @@ namespace perf\Form;
  *
  *
  */
-class HiddenInput extends Field
+class SubmitInput extends Field
 {
 
-    const FIELD_TYPE_ID = 'input.hidden';
+    const FIELD_TYPE_ID = 'input.submit';
 
     /**
      *
@@ -25,11 +25,24 @@ class HiddenInput extends Field
      * @param string $value
      * @return void
      */
-    public function __construct($name, $value)
+    public function __construct($name = '', $value = '')
     {
         parent::__construct($name);
 
         $this->value = $value;
+    }
+
+    /**
+     *
+     *
+     * @param string $value
+     * @return SubmitInput Fluent return.
+     */
+    public function setValue($value)
+    {
+        $this->value = $value;
+
+        return $this;
     }
 
     /**
