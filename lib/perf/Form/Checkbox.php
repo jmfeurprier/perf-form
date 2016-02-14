@@ -63,6 +63,26 @@ class Checkbox extends Field
     /**
      *
      *
+     * @return string
+     */
+    public function getCheckedValue()
+    {
+        return $this->checkedValue;
+    }
+
+    /**
+     *
+     *
+     * @return string
+     */
+    public function getUncheckedValue()
+    {
+        return $this->uncheckedValue;
+    }
+
+    /**
+     *
+     *
      * @return mixed
      */
     public function getValue()
