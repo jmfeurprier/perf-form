@@ -112,7 +112,7 @@ class Form
         }
 
         $fields = $this->getFields();
-        $fields->setSubmittedValues($submittedValues);
+        $fields->submittedValues($submittedValues);
 
         $values = $fields->getValues();
 
