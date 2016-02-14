@@ -45,7 +45,7 @@ abstract class FieldTestBase extends \PHPUnit_Framework_TestCase
 
         $field = $this->createField($name);
         $field->setInitialValue($initialValue);
-        $field->setSubmittedValue($submittedValue);
+        $field->submitValue($submittedValue);
 
         $this->assertSame($submittedValue, $field->getValue());
     }
@@ -84,7 +84,7 @@ abstract class FieldTestBase extends \PHPUnit_Framework_TestCase
         $field = $this->createField($name);
         $field->addFilter($filter);
         $field->setInitialValue($initialValue);
-        $field->setSubmittedValue($submittedValue);
+        $field->submitValue($submittedValue);
 
         $this->assertSame($filteredValue, $field->getValue());
     }
@@ -100,7 +100,7 @@ abstract class FieldTestBase extends \PHPUnit_Framework_TestCase
 
         $field = $this->createField($name);
         $field->setInitialValue($initialValue);
-        $field->setSubmittedValue($submittedValue);
+        $field->submitValue($submittedValue);
         $field->reset();
 
         $this->assertSame($initialValue, $field->getValue());

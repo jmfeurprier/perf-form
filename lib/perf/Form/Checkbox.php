@@ -25,24 +25,6 @@ class Checkbox extends Field
     private $uncheckedValue = '0';
 
     /**
-     * Constructor.
-     *
-     * @param string $name
-     * @param string $checkedValue
-     * @param string $uncheckedValue
-     * @return void
-     */
-    public function __construct($name, $checkedValue = '1', $uncheckedValue = '0')
-    {
-        parent::__construct($name);
-
-        $this
-            ->setCheckedValue($checkedValue)
-            ->setUncheckedValue($uncheckedValue)
-        ;
-    }
-
-    /**
      *
      *
      * @param string $value
@@ -71,67 +53,55 @@ class Checkbox extends Field
     /**
      *
      *
-     * @return bool
+     * @return mixed
      */
-    public function unchecked()
-    {
-        return !$this->checked();
-    }
-
-    /**
-     *
-     *
-     * @return bool
-     */
-    public function checked()
-    {
-        return ($this->getValue() === $this->getCheckedValue());
-    }
-
-    /**
-     *
-     *
-     * @return Checkbox Fluent return.
-     */
-    public function uncheck()
-    {
-        return $this->check(false);
-    }
-
-    /**
-     *
-     *
-     * @param bool $checked
-     * @return Checkbox Fluent return.
-     */
-    public function check($checked = true)
-    {
-        if ($checked) {
-            $submittedValue = $this->getCheckedValue();
-        } else {
-            $submittedValue = $this->getUncheckedValue();
-        }
-
-        return $this->setSubmittedValue($submittedValue);
-    }
-
-    /**
-     *
-     *
-     * @return string
-     */
-    public function getCheckedValue()
-    {
-        return $this->checkedValue;
-    }
-
-    /**
-     *
-     *
-     * @return string
-     */
-    public function getUncheckedValue()
+    protected function getEmptyValue()
     {
         return $this->uncheckedValue;
+    }
+
+    /**
+     *
+     *
+     * @return mixed
+     */
+    public function getValue()
+    {
+        $this->assertCoherent();
+
+        $value = parent::getValue();
+
+        if ($value === $this->checkedValue) {
+            return $this->checkedValue;
+        }
+
+        return $this->uncheckedValue;
+    }
+
+    /**
+     *
+     *
+     * @return bool
+     */
+    public function isChecked()
+    {
+        $this->assertCoherent();
+
+        $value = parent::getValue();
+
+        return ($value === $this->checkedValue);
+    }
+
+    /**
+     *
+     *
+     * @return void
+     * @throws \RuntimeException
+     */
+    private function assertCoherent()
+    {
+        if ($this->checkedValue === $this->uncheckedValue) {
+            throw new \RuntimeException("Checked value and unchecked value cannot be the same.");
+        }
     }
 }

@@ -120,7 +120,7 @@ class FieldCollection implements \IteratorAggregate
      * @param {string:mixed} $values
      * @return FieldCollection Fluent return.
      */
-    public function setSubmittedValues(array $values)
+    public function submitValues(array $values)
     {
         foreach ($this->fields as $field) {
             $fieldName = $field->getName();
@@ -128,7 +128,9 @@ class FieldCollection implements \IteratorAggregate
             if (array_key_exists($fieldName, $values)) {
                 $value = $values[$fieldName];
 
-                $field->setSubmittedValue($value);
+                $field->submitValue($value);
+            } else {
+                $field->submitNoValue();
             }
         }
 

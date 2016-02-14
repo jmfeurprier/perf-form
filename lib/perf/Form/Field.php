@@ -90,37 +90,6 @@ abstract class Field
     /**
      *
      *
-     * @param mixed $value
-     * @return Field Fluent return.
-     */
-    public function setSubmittedValue($value)
-    {
-        foreach ($this->filters as $filter) {
-            $value = $filter->apply($value);
-        }
-
-        $this->submittedValue = $value;
-        $this->submitted      = true;
-
-        return $this;
-    }
-
-    /**
-     *
-     *
-     * @return Field Fluent return.
-     */
-    public function reset()
-    {
-        $this->submittedValue = null;
-        $this->submitted      = false;
-
-        return $this;
-    }
-
-    /**
-     *
-     *
      * @param Filter $filter
      * @return Field Fluent return.
      */
@@ -161,6 +130,44 @@ abstract class Field
     /**
      *
      *
+     * @param mixed $value
+     * @return void
+     */
+    public function submitValue($value)
+    {
+        foreach ($this->filters as $filter) {
+            $value = $filter->apply($value);
+        }
+
+        $this->submittedValue = $value;
+        $this->submitted      = true;
+    }
+
+    /**
+     *
+     *
+     * @return void
+     */
+    public function submitNoValue()
+    {
+        $this->submittedValue = $this->getEmptyValue();
+        $this->submitted      = true;
+    }
+
+    /**
+     *
+     *
+     * @return void
+     */
+    public function reset()
+    {
+        $this->submittedValue = null;
+        $this->submitted      = false;
+    }
+
+    /**
+     *
+     *
      * @return string
      */
     public function getName()
@@ -190,6 +197,17 @@ abstract class Field
     protected function isSubmitted()
     {
         return $this->submitted;
+    }
+
+    /**
+     *
+     * Default implementation.
+     *
+     * @return mixed
+     */
+    protected function getEmptyValue()
+    {
+        return '';
     }
 
     /**

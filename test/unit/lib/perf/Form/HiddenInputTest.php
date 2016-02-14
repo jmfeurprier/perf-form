@@ -5,17 +5,20 @@ namespace perf\Form;
 /**
  *
  */
-class HiddenInputTest extends FieldTestBase
+class HiddenInputTest extends \PHPUnit_Framework_TestCase
 {
+
+    private $value = 'bar';
 
     /**
      *
      */
     public function testGetFieldTypeId()
     {
-        $name = 'foo';
+        $name  = 'foo';
+        $value = 'bar';
 
-        $field = $this->createField($name);
+        $field = new HiddenInput($name, $value);
 
         $this->assertSame(HiddenInput::FIELD_TYPE_ID, $field->getFieldTypeId());
     }
@@ -23,8 +26,13 @@ class HiddenInputTest extends FieldTestBase
     /**
      *
      */
-    protected function createField($name)
+    public function testGetName()
     {
-        return new HiddenInput($name);
+        $name  = 'foo';
+        $value = 'bar';
+
+        $field = new HiddenInput($name, $value);
+
+        $this->assertSame($name, $field->getName());
     }
 }
