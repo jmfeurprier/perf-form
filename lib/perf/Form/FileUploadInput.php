@@ -66,7 +66,7 @@ class FileUploadInput extends Field
      * @param string $value
      * @return FileUploadInput Fluent return.
      */
-    public function setSubmittedValue($value)
+    public function submitValue($value)
     {
         if (is_array($value)) {
             foreach (array_keys($this->initialValue) as $key) {

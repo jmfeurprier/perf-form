@@ -92,11 +92,11 @@ class Radio extends Field
      * @param string $value
      * @return Field Fluent return.
      */
-    public function setSubmittedValue($value)
+    public function submitValue($value)
     {
         $this->items->checkByValue($value);
 
-        return parent::setSubmittedValue($value);
+        return parent::submitValue($value);
     }
 
     /**
