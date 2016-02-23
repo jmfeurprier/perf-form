@@ -40,9 +40,23 @@ class Form
     /**
      *
      *
-     * @var Error[]
+     * @var bool
      */
-    private $errors = array();
+    private $submitted = false;
+
+    /**
+     *
+     *
+     * @var bool
+     */
+    private $valid = false;
+
+    /**
+     *
+     *
+     * @var ErrorCollection
+     */
+    private $errors;
 
     /**
      *
@@ -101,15 +115,19 @@ class Form
      *
      *
      * @param array $submittedValues
-     * @return SubmissionOutcome
+     * @return void
      */
     public function submit(array $submittedValues = array())
     {
-        $this->errors = array();
+        $this->submitted = false;
+        $this->errors    = new ErrorCollection();
+        $this->valid     = false;
 
         if (!$this->submittable($submittedValues)) {
-            return new NoSubmission($this->getValues());
+            return;
         }
+
+        $this->submitted = true;
 
         $fields = $this->getFields();
         $fields->submitValues($submittedValues);
@@ -121,12 +139,12 @@ class Form
         if (count($this->errors) > 0) {
             $this->onInvalid($values);
 
-            return new InvalidSubmission($this->errors, $values);
+            return;
         }
 
-        $this->onValid($values);
+        $this->valid = true;
 
-        return new ValidValuesSubmitted($values);
+        $this->onValid($values);
     }
 
     /**
@@ -162,7 +180,7 @@ class Form
     {
         $error = new Error($id);
 
-        $this->errors[] = $error;
+        $this->getErrors()->add($error);
 
         return $error;
     }
@@ -212,11 +230,45 @@ class Form
     /**
      *
      *
+     * @return bool
+     */
+    public function isSubmitted()
+    {
+        return $this->submitted;
+    }
+
+    /**
+     *
+     *
+     * @return bool
+     */
+    public function isValid()
+    {
+        return $this->valid;
+    }
+
+    /**
+     *
+     *
      * @return {string:mixed}
      */
     public function getValues()
     {
         return $this->getFields()->getValues();
+    }
+
+    /**
+     *
+     *
+     * @return ErrorCollection
+     */
+    public function getErrors()
+    {
+        if (!isset($this->errors)) {
+            $this->errors = new ErrorCollection();
+        }
+
+        return $this->errors;
     }
 
     /**

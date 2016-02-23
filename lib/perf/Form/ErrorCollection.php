@@ -35,7 +35,7 @@ class ErrorCollection implements \IteratorAggregate, \Countable
      * @param Error $error
      * @return void
      */
-    private function add(Error $error)
+    public function add(Error $error)
     {
         $this->errors[$error->getId()] = $error;
     }
@@ -53,11 +53,27 @@ class ErrorCollection implements \IteratorAggregate, \Countable
     /**
      *
      *
-     * @return array
+     * @return string[]
      */
     public function getIds()
     {
         return array_keys($this->errors);
+    }
+
+    /**
+     *
+     *
+     * @return string[]
+     */
+    public function getMessages()
+    {
+        $messages = array();
+
+        foreach ($this->errors as $error) {
+            $messages[] = $error->getMessage();
+        }
+
+        return $messages;
     }
 
     /**
