@@ -49,7 +49,7 @@ class TrimFilter implements Filter
      *
      *
      * @param mixed $value
-     * @return string
+     * @return mixed
      */
     public function apply($value)
     {
