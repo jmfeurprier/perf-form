@@ -10,6 +10,7 @@ class Checkbox extends Field
 {
 
     const FIELD_TYPE_ID = 'input.checkbox';
+
     /**
      *
      *
@@ -32,7 +33,7 @@ class Checkbox extends Field
      */
     public function setCheckedValue($value)
     {
-        $this->checkedValue = (string) $value;
+        $this->checkedValue = $value;
 
         return $this;
     }
@@ -45,7 +46,7 @@ class Checkbox extends Field
      */
     public function setUncheckedValue($value)
     {
-        $this->uncheckedValue = (string) $value;
+        $this->uncheckedValue = $value;
 
         return $this;
     }
