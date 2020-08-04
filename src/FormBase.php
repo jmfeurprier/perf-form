@@ -2,8 +2,13 @@
 
 namespace perf\Form;
 
+use perf\Form\Attributes\AttributeCollection;
 use perf\Form\Field\FieldCollection;
 use perf\Form\Field\FieldInterface;
+use perf\Form\Submission\InvalidSubmission;
+use perf\Form\Submission\NoSubmission;
+use perf\Form\Submission\SubmissionInterface;
+use perf\Form\Submission\ValidValuesSubmitted;
 use perf\Form\Validation\FormValidationError;
 use perf\Form\Validation\FormValidationErrorCollection;
 
@@ -53,7 +58,7 @@ abstract class FormBase
         return $this;
     }
 
-    public function submit(array $submittedValues = []): SubmissionOutcome
+    public function submit(array $submittedValues = []): SubmissionInterface
     {
         $this->errors = new FormValidationErrorCollection();
 
@@ -106,7 +111,7 @@ abstract class FormBase
     {
         $error = new FormValidationError($id);
 
-        $this->getErrors()->add($error);
+        $this->errors->add($error);
 
         return $error;
     }
@@ -149,15 +154,6 @@ abstract class FormBase
     public function getValues(): array
     {
         return $this->getFields()->getValues();
-    }
-
-    public function getErrors(): FormValidationErrorCollection
-    {
-        if (!isset($this->errors)) {
-            $this->errors = new FormValidationErrorCollection();
-        }
-
-        return $this->errors;
     }
 
     public function resetFields(): void

@@ -2,7 +2,8 @@
 
 namespace perf\Form\Field;
 
-use perf\Form\AttributeCollection;
+use perf\Form\Attributes\AttributeCollection;
+use perf\Form\Exception\FormException;
 use perf\Form\Filtering\FilterInterface;
 
 abstract class FieldBase implements FieldInterface
@@ -169,6 +170,8 @@ abstract class FieldBase implements FieldInterface
      * @param string $name
      *
      * @return mixed
+     *
+     * @throws FormException
      */
     public function getAttribute(string $name)
     {

@@ -1,6 +1,6 @@
 <?php
 
-namespace perf\Form;
+namespace perf\Form\Attributes;
 
 use ArrayIterator;
 use IteratorAggregate;
@@ -11,7 +11,7 @@ class AttributeCollection implements IteratorAggregate
     /**
      * @var {string:mixed}
      */
-    private $attributes = [];
+    private array $attributes = [];
 
     /**
      * {@inheritDoc}

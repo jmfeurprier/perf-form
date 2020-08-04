@@ -14,7 +14,14 @@ class ReplacementFilter implements FilterInterface
      */
     public function __construct(array $replacements)
     {
-        $this->replacements = $replacements;
+        foreach ($replacements as $search => $replace) {
+            $this->addReplacement($search, $replace);
+        }
+    }
+
+    private function addReplacement(string $search, string $replace): void
+    {
+        $this->replacements[$search] = $replace;
     }
 
     /**
