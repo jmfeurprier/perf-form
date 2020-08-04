@@ -17,10 +17,6 @@ abstract class FormBase
 
     private FieldCollection $fields;
 
-    private bool $submitted = false;
-
-    private bool $valid = false;
-
     private FormValidationErrorCollection $errors;
 
     public function setMethod(string $method): self
@@ -57,17 +53,13 @@ abstract class FormBase
         return $this;
     }
 
-    public function submit(array $submittedValues = []): void
+    public function submit(array $submittedValues = []): SubmissionOutcome
     {
-        $this->submitted = false;
-        $this->errors    = new FormValidationErrorCollection();
-        $this->valid     = false;
+        $this->errors = new FormValidationErrorCollection();
 
         if (!$this->isSubmittable($submittedValues)) {
-            return;
+            return new NoSubmission($this->getValues());
         }
-
-        $this->submitted = true;
 
         $fields = $this->getFields();
         $fields->submitValues($submittedValues);
@@ -79,12 +71,12 @@ abstract class FormBase
         if (count($this->errors) > 0) {
             $this->onInvalid($values);
 
-            return;
+            return new InvalidSubmission($this->errors, $values);
         }
 
-        $this->valid = true;
-
         $this->onValid($values);
+
+        return new ValidValuesSubmitted($values);
     }
 
     /**
@@ -149,16 +141,6 @@ abstract class FormBase
     public function getAction(): string
     {
         return $this->action;
-    }
-
-    public function isSubmitted(): bool
-    {
-        return $this->submitted;
-    }
-
-    public function isValid(): bool
-    {
-        return $this->valid;
     }
 
     /**
