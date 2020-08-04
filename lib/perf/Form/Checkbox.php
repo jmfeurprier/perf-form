@@ -6,7 +6,7 @@ namespace perf\Form;
  *
  *
  */
-class Checkbox extends Field
+class Checkbox extends FieldBase
 {
 
     const FIELD_TYPE_ID = 'input.checkbox';

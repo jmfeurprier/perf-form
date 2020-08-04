@@ -6,10 +6,17 @@ namespace perf\Form;
  *
  *
  */
-class Select extends Field
+class Select extends FieldBase
 {
 
     const FIELD_TYPE_ID = 'select';
+
+    /**
+     *
+     *
+     * @var bool
+     */
+    private $multiple = false;
 
     /**
      *
@@ -22,13 +29,15 @@ class Select extends Field
      * Constructor.
      *
      * @param string $name
+     * @param bool   $multiple
      * @return void
      */
-    public function __construct($name)
+    public function __construct($name, $multiple = false)
     {
         parent::__construct($name);
 
-        $this->options = new SelectOptionCollection();
+        $this->multiple = (bool) $multiple;
+        $this->options  = new SelectOptionCollection();
     }
 
     /**
@@ -80,7 +89,7 @@ class Select extends Field
     public function setInitialValue($value)
     {
         if (!$this->isSubmitted()) {
-            $this->options->selectOptionByValue($value);
+            $this->selectOptions($value);
         }
 
         return parent::setInitialValue($value);
@@ -89,14 +98,33 @@ class Select extends Field
     /**
      *
      *
-     * @param string $value
+     * @param mixed $value
      * @return Field Fluent return.
      */
     public function submitValue($value)
     {
-        $this->options->selectOptionByValue($value);
+        $this->selectOptions($value);
 
         return parent::submitValue($value);
+    }
+
+    /**
+     *
+     *
+     * @param mixed $value
+     * @return void
+     */
+    private function selectOptions($value)
+    {
+        if ($this->multiple) {
+            if (!is_array($value)) {
+                $value = array();
+            }
+
+            $this->options->selectOptionByValues($value);
+        } else {
+            $this->options->selectOptionByValue($value);
+        }
     }
 
     /**
@@ -107,5 +135,15 @@ class Select extends Field
     public function getOptions()
     {
         return $this->options->toArray();
+    }
+
+    /**
+     *
+     *
+     * @return bool
+     */
+    public function isMultiple()
+    {
+        return $this->multiple;
     }
 }

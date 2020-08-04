@@ -6,7 +6,7 @@ namespace perf\Form;
  *
  *
  */
-class HiddenInput extends Field
+class HiddenInput extends FieldBase
 {
 
     const FIELD_TYPE_ID = 'input.hidden';

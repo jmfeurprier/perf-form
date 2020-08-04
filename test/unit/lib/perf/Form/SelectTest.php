@@ -23,8 +23,40 @@ class SelectTest extends FieldTestBase
     /**
      *
      */
-    protected function createField($name)
+    public function testGetValueWithInitialValueAndMultiple()
     {
-        return new Select($name);
+        $name = 'foo';
+
+        $options = array(
+            new SelectOption('abc'),
+            new SelectOption('def'),
+            new SelectOption('ghi'),
+        );
+
+        $initialValue = array(
+            'abc',
+            'ghi',
+            'jkl',
+        );
+
+        $field = $this->createField($name, true);
+//        $field->setMultiple();
+        $field->setOptions($options);
+        $field->setInitialValue($initialValue);
+
+        $expected = array(
+            'abc',
+            'ghi',
+        );
+
+        $this->assertSame($expected, $field->getValue());
+    }
+
+    /**
+     *
+     */
+    protected function createField($name, $multiple = false)
+    {
+        return new Select($name, $multiple);
     }
 }

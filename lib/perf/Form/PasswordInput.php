@@ -6,7 +6,7 @@ namespace perf\Form;
  *
  *
  */
-class PasswordInput extends Field
+class PasswordInput extends FieldBase
 {
 
     const FIELD_TYPE_ID = 'input.password';

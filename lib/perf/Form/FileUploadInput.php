@@ -6,7 +6,7 @@ namespace perf\Form;
  *
  *
  */
-class FileUploadInput extends Field
+class FileUploadInput extends FieldBase
 {
 
     const FIELD_TYPE_ID = 'input.file';

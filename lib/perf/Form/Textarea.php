@@ -6,7 +6,7 @@ namespace perf\Form;
  *
  *
  */
-class Textarea extends Field
+class Textarea extends FieldBase
 {
 
     const FIELD_TYPE_ID = 'textarea';

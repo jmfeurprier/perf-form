@@ -86,6 +86,23 @@ class SelectOptionCollection implements \IteratorAggregate
     /**
      *
      *
+     * @param string[] $values
+     * @return void
+     */
+    public function selectOptionByValues(array $values)
+    {
+        foreach ($this->options as $option) {
+            if (in_array($option->getValue(), $values, true)) {
+                $option->select();
+            } else {
+                $option->deselect();
+            }
+        }
+    }
+
+    /**
+     *
+     *
      * @return \Traversable
      */
     public function getIterator()

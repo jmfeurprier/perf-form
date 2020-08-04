@@ -6,7 +6,7 @@ namespace perf\Form;
  *
  *
  */
-class SubmitInput extends Field
+class SubmitInput extends FieldBase
 {
 
     const FIELD_TYPE_ID = 'input.submit';

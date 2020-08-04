@@ -6,7 +6,7 @@ namespace perf\Form;
  *
  *
  */
-class Radio extends Field
+class Radio extends FieldBase
 {
 
     const FIELD_TYPE_ID = 'input.radio';
