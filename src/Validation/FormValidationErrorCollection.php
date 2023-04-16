@@ -77,7 +77,7 @@ class FormValidationErrorCollection implements IteratorAggregate, Countable
     /**
      * {@inheritDoc}
      */
-    public function count()
+    public function count(): int
     {
         return count($this->errors);
     }
