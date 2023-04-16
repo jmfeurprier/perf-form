@@ -17,8 +17,6 @@ class Radio extends FieldBase
 
     /**
      * @param RadioItem[] $items
-     *
-     * @return Radio Fluent return.
      */
     public function setItems(array $items): self
     {
@@ -37,8 +35,6 @@ class Radio extends FieldBase
 
     /**
      * @param RadioItem[] $items
-     *
-     * @return Radio Fluent return.
      */
     public function addItems(array $items): self
     {
@@ -49,8 +45,6 @@ class Radio extends FieldBase
 
     /**
      * @param mixed $value
-     *
-     * @return Radio Fluent return.
      */
     public function setInitialValue($value): self
     {

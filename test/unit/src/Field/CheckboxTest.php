@@ -24,7 +24,7 @@ class CheckboxTest extends TestCase
         $this->assertFalse($field->isChecked());
     }
 
-    public function dataProviderIsCheckedReturnsFalse()
+    public static function dataProviderIsCheckedReturnsFalse()
     {
         return [
             ['1', '0', '0', null],
@@ -53,7 +53,7 @@ class CheckboxTest extends TestCase
         $this->assertSame($uncheckedValue, $field->getValue());
     }
 
-    public function dataProviderIsCheckedReturnsTrue()
+    public static function dataProviderIsCheckedReturnsTrue()
     {
         return [
             ['1', '0', '0', '1'],

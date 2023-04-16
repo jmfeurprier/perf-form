@@ -10,10 +10,6 @@ class SelectOption
 
     private bool $selected = false;
 
-    /**
-     * @param string $value
-     * @param string $label
-     */
     public function __construct(string $value, string $label = '')
     {
         $this->value = $value;

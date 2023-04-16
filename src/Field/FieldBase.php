@@ -39,8 +39,6 @@ abstract class FieldBase implements FieldInterface
 
     /**
      * @param mixed $value
-     *
-     * @return FieldBase Fluent return.
      */
     public function setInitialValue($value): self
     {
@@ -64,10 +62,7 @@ abstract class FieldBase implements FieldInterface
     }
 
     /**
-     * @param string $key
-     * @param mixed  $value
-     *
-     * @return FieldBase Fluent return.
+     * @param mixed $value
      */
     public function setAttribute(string $key, $value): self
     {
@@ -78,8 +73,6 @@ abstract class FieldBase implements FieldInterface
 
     /**
      * @param mixed $value
-     *
-     * @return void
      */
     public function submitValue($value): void
     {
@@ -167,8 +160,6 @@ abstract class FieldBase implements FieldInterface
     }
 
     /**
-     * @param string $name
-     *
      * @return mixed
      *
      * @throws FormException
@@ -178,9 +169,6 @@ abstract class FieldBase implements FieldInterface
         return $this->attributes->get($name);
     }
 
-    /**
-     * @return {string:mixed}
-     */
     public function getAttributes(): array
     {
         return $this->attributes->toArray();

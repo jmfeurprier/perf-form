@@ -16,7 +16,7 @@ class UppercaseFilter implements FilterInterface
     /**
      * {@inheritDoc}
      */
-    public function apply($value)
+    public function apply($value): string
     {
         return mb_strtoupper($value, $this->encoding);
     }

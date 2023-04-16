@@ -60,8 +60,6 @@ class Checkbox extends FieldBase
     }
 
     /**
-     * @return bool
-     *
      * @throws FormException
      */
     public function isChecked(): bool
@@ -74,8 +72,6 @@ class Checkbox extends FieldBase
     }
 
     /**
-     * @return void
-     *
      * @throws FormException
      */
     private function assertCoherent(): void

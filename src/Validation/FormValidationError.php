@@ -13,8 +13,6 @@ class FormValidationError
     private ?string $fieldName = null;
 
     /**
-     * @param string $id
-     *
      * @throws FormException
      */
     public function __construct(string $id)
@@ -32,10 +30,6 @@ class FormValidationError
     }
 
     /**
-     * @param null|string $message
-     *
-     * @return FormValidationError Fluent return.
-     *
      * @throws FormException
      */
     public function setMessage(?string $message): self
@@ -55,10 +49,6 @@ class FormValidationError
     }
 
     /**
-     * @param null|string $name
-     *
-     * @return FormValidationError Fluent return.
-     *
      * @throws FormException
      */
     public function setFieldName(?string $name): self

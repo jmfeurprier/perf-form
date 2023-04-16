@@ -5,6 +5,7 @@ namespace perf\Form\Attributes;
 use ArrayIterator;
 use IteratorAggregate;
 use perf\Form\Exception\FormException;
+use Traversable;
 
 class AttributeCollection implements IteratorAggregate
 {
@@ -16,16 +17,13 @@ class AttributeCollection implements IteratorAggregate
     /**
      * {@inheritDoc}
      */
-    public function getIterator()
+    public function getIterator(): Traversable
     {
         return new ArrayIterator($this->attributes);
     }
 
     /**
-     * @param string $name
-     * @param mixed  $value
-     *
-     * @return void
+     * @param mixed $value
      */
     public function set(string $name, $value): void
     {
@@ -38,8 +36,6 @@ class AttributeCollection implements IteratorAggregate
     }
 
     /**
-     * @param string $name
-     *
      * @return mixed
      *
      * @throws FormException
@@ -66,7 +62,7 @@ class AttributeCollection implements IteratorAggregate
     /**
      * @return {string:mixed}
      */
-    public function toArray()
+    public function toArray(): array
     {
         return $this->attributes;
     }

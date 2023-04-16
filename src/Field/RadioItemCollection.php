@@ -4,6 +4,7 @@ namespace perf\Form\Field;
 
 use ArrayIterator;
 use IteratorAggregate;
+use Traversable;
 
 class RadioItemCollection implements IteratorAggregate
 {
@@ -15,15 +16,13 @@ class RadioItemCollection implements IteratorAggregate
     /**
      * {@inheritDoc}
      */
-    public function getIterator()
+    public function getIterator(): Traversable
     {
         return new ArrayIterator($this->items);
     }
 
     /**
      * @param RadioItem[] $items
-     *
-     * @return void
      */
     public function setMany(array $items): void
     {
@@ -38,8 +37,6 @@ class RadioItemCollection implements IteratorAggregate
 
     /**
      * @param RadioItem[] $items
-     *
-     * @return void
      */
     public function addMany(array $items): void
     {

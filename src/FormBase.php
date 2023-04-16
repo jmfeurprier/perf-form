@@ -3,6 +3,7 @@
 namespace perf\Form;
 
 use perf\Form\Attributes\AttributeCollection;
+use perf\Form\Exception\FormException;
 use perf\Form\Field\FieldCollection;
 use perf\Form\Field\FieldInterface;
 use perf\Form\Submission\InvalidSubmission;
@@ -46,10 +47,7 @@ abstract class FormBase
     }
 
     /**
-     * @param string $key
-     * @param mixed  $value
-     *
-     * @return FormBase Fluent return.
+     * @param mixed $value
      */
     public function setAttribute(string $key, $value): self
     {
@@ -86,10 +84,6 @@ abstract class FormBase
 
     /**
      * Default implementation.
-     *
-     * @param {string:mixed} $submittedValues
-     *
-     * @return bool
      */
     protected function isSubmittable(array $submittedValues): bool
     {
@@ -98,15 +92,14 @@ abstract class FormBase
 
     /**
      * Default implementation.
-     *
-     * @param {string:mixed} $values
-     *
-     * @return void
      */
     protected function validate(array $values): void
     {
     }
 
+    /**
+     * @throws FormException
+     */
     protected function addError(string $id): FormValidationError
     {
         $error = new FormValidationError($id);
@@ -118,10 +111,6 @@ abstract class FormBase
 
     /**
      * Default implementation.
-     *
-     * @param {string:mixed} $values
-     *
-     * @return void
      */
     protected function onValid(array $values): void
     {
@@ -129,10 +118,6 @@ abstract class FormBase
 
     /**
      * Default implementation.
-     *
-     * @param {string:mixed} $values
-     *
-     * @return void
      */
     protected function onInvalid(array $values): void
     {
@@ -148,9 +133,6 @@ abstract class FormBase
         return $this->action;
     }
 
-    /**
-     * @return {string:mixed}
-     */
     public function getValues(): array
     {
         return $this->getFields()->getValues();
@@ -176,9 +158,9 @@ abstract class FormBase
     }
 
     /**
-     * @param string $name
-     *
      * @return mixed
+     *
+     * @throws FormException
      */
     public function getAttribute(string $name)
     {

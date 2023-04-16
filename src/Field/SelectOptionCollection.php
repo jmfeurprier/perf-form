@@ -22,8 +22,6 @@ class SelectOptionCollection implements IteratorAggregate
 
     /**
      * @param SelectOption[] $options
-     *
-     * @return void
      */
     public function setMany(array $options): void
     {
@@ -38,8 +36,6 @@ class SelectOptionCollection implements IteratorAggregate
 
     /**
      * @param SelectOption[] $options
-     *
-     * @return void
      */
     public function addMany(array $options): void
     {
@@ -70,8 +66,6 @@ class SelectOptionCollection implements IteratorAggregate
 
     /**
      * @param string[] $values
-     *
-     * @return void
      */
     public function selectOptionByValues(array $values): void
     {

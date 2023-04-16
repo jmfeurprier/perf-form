@@ -29,8 +29,6 @@ class FileUploadInput extends FieldBase
     /**
      * @param mixed $value
      *
-     * @return FileUploadInput Fluent return.
-     *
      * @throws FormException
      */
     public function setInitialValue($value): self

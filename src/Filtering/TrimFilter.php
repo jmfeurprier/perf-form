@@ -29,7 +29,7 @@ class TrimFilter implements FilterInterface
     /**
      * {@inheritDoc}
      */
-    public function apply($value)
+    public function apply($value): string
     {
         $trimmableCharacters = join($this->trimmableCharacters);
 

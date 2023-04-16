@@ -16,7 +16,7 @@ class LowercaseFilter implements FilterInterface
     /**
      * {@inheritDoc}
      */
-    public function apply($value)
+    public function apply($value): string
     {
         return mb_strtolower($value, $this->encoding);
     }

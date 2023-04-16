@@ -5,6 +5,7 @@ namespace perf\Form\Field;
 use ArrayIterator;
 use IteratorAggregate;
 use perf\Form\Exception\FormException;
+use Traversable;
 
 class FieldCollection implements IteratorAggregate
 {
@@ -16,7 +17,7 @@ class FieldCollection implements IteratorAggregate
     /**
      * {@inheritDoc}
      */
-    public function getIterator()
+    public function getIterator(): Traversable
     {
         return new ArrayIterator($this->fields);
     }
@@ -34,10 +35,6 @@ class FieldCollection implements IteratorAggregate
     }
 
     /**
-     * @param string $name
-     *
-     * @return FieldInterface
-     *
      * @throws FormException
      */
     public function get(string $name): FieldInterface
@@ -65,11 +62,6 @@ class FieldCollection implements IteratorAggregate
         return $this;
     }
 
-    /**
-     * @param {string:mixed} $values
-     *
-     * @return FieldCollection Fluent return.
-     */
     public function setInitialValues(array $values): self
     {
         foreach ($this->fields as $field) {
@@ -85,11 +77,6 @@ class FieldCollection implements IteratorAggregate
         return $this;
     }
 
-    /**
-     * @param {string:mixed} $values
-     *
-     * @return FieldCollection Fluent return.
-     */
     public function submitValues(array $values): self
     {
         foreach ($this->fields as $field) {
@@ -109,9 +96,6 @@ class FieldCollection implements IteratorAggregate
         return $this;
     }
 
-    /**
-     * @return {string:mixed}
-     */
     public function getValues(): array
     {
         $values = [];

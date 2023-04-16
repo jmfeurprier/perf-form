@@ -5,6 +5,7 @@ namespace perf\Form\Validation;
 use ArrayIterator;
 use Countable;
 use IteratorAggregate;
+use Traversable;
 
 class FormValidationErrorCollection implements IteratorAggregate, Countable
 {
@@ -68,7 +69,7 @@ class FormValidationErrorCollection implements IteratorAggregate, Countable
     /**
      * {@inheritDoc}
      */
-    public function getIterator()
+    public function getIterator(): Traversable
     {
         return new ArrayIterator($this->errors);
     }

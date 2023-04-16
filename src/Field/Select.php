@@ -20,8 +20,6 @@ class Select extends FieldBase
 
     /**
      * @param SelectOption[] $options
-     *
-     * @return Select Fluent return.
      */
     public function setOptions(array $options): self
     {
@@ -40,8 +38,6 @@ class Select extends FieldBase
 
     /**
      * @param SelectOption[] $options
-     *
-     * @return Select Fluent return.
      */
     public function addOptions(array $options): self
     {
@@ -52,8 +48,6 @@ class Select extends FieldBase
 
     /**
      * @param mixed $value
-     *
-     * @return Select Fluent return.
      */
     public function setInitialValue($value): self
     {
@@ -78,8 +72,6 @@ class Select extends FieldBase
 
     /**
      * @param mixed $value
-     *
-     * @return void
      */
     private function selectOptions($value): void
     {
