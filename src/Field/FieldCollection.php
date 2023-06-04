@@ -10,9 +10,9 @@ use Traversable;
 class FieldCollection implements IteratorAggregate
 {
     /**
-     * @var {string:Field}
+     * @var array<string, FieldInterface>
      */
-    private $fields = [];
+    private array $fields = [];
 
     /**
      * {@inheritDoc}

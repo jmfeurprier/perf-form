@@ -42,11 +42,9 @@ class Checkbox extends FieldBase
     }
 
     /**
-     * @return mixed
-     *
      * @throws FormException
      */
-    public function getValue()
+    public function getValue(): mixed
     {
         $this->assertCoherent();
 

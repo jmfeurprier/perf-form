@@ -10,7 +10,7 @@ use Traversable;
 class AttributeCollection implements IteratorAggregate
 {
     /**
-     * @var {string:mixed}
+     * @var array<string, mixed>
      */
     private array $attributes = [];
 
@@ -22,10 +22,7 @@ class AttributeCollection implements IteratorAggregate
         return new ArrayIterator($this->attributes);
     }
 
-    /**
-     * @param mixed $value
-     */
-    public function set(string $name, $value): void
+    public function set(string $name, mixed $value): void
     {
         $this->attributes[$name] = $value;
     }
@@ -36,11 +33,9 @@ class AttributeCollection implements IteratorAggregate
     }
 
     /**
-     * @return mixed
-     *
      * @throws FormException
      */
-    public function get(string $name)
+    public function get(string $name): mixed
     {
         if ($this->has($name)) {
             return $this->attributes[$name];
@@ -60,7 +55,7 @@ class AttributeCollection implements IteratorAggregate
     }
 
     /**
-     * @return {string:mixed}
+     * @return array<string, mixed>
      */
     public function toArray(): array
     {

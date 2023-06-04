@@ -6,16 +6,15 @@ class Select extends FieldBase
 {
     public const FIELD_TYPE_ID = 'select';
 
-    private bool $multiple = false;
-
     private SelectOptionCollection $options;
 
-    public function __construct(string $name, bool $multiple = false)
-    {
+    public function __construct(
+        string $name,
+        private readonly bool $multiple = false
+    ) {
         parent::__construct($name);
 
-        $this->multiple = $multiple;
-        $this->options  = new SelectOptionCollection();
+        $this->options = new SelectOptionCollection();
     }
 
     /**
@@ -46,10 +45,7 @@ class Select extends FieldBase
         return $this;
     }
 
-    /**
-     * @param mixed $value
-     */
-    public function setInitialValue($value): self
+    public function setInitialValue(mixed $value): self
     {
         if (!$this->isSubmitted()) {
             $this->selectOptions($value);
@@ -60,20 +56,14 @@ class Select extends FieldBase
         return $this;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function submitValue($value): void
+    public function submitValue(mixed $value): void
     {
         $this->selectOptions($value);
 
         parent::submitValue($value);
     }
 
-    /**
-     * @param mixed $value
-     */
-    private function selectOptions($value): void
+    private function selectOptions(mixed $value): void
     {
         if ($this->multiple) {
             if (!is_array($value)) {

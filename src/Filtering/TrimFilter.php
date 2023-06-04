@@ -14,22 +14,14 @@ class TrimFilter implements FilterInterface
     ];
 
     /**
-     * @var string[]
-     */
-    private array $trimmableCharacters;
-
-    /**
      * @param string[] $trimmableCharacters
      */
-    public function __construct(array $trimmableCharacters = self::TRIMMABLE_CHARACTERS_DEFAULT)
-    {
-        $this->trimmableCharacters = $trimmableCharacters;
+    public function __construct(
+        private readonly array $trimmableCharacters = self::TRIMMABLE_CHARACTERS_DEFAULT
+    ) {
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function apply($value): string
+    public function apply(mixed $value): string
     {
         $trimmableCharacters = join($this->trimmableCharacters);
 

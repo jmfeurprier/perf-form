@@ -4,10 +4,7 @@ namespace perf\Form\Filtering;
 
 class NullifyFilter implements FilterInterface
 {
-    /**
-     * {@inheritDoc}
-     */
-    public function apply($value)
+    public function apply(mixed $value): mixed
     {
         if ('' === $value) {
             return null;

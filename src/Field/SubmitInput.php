@@ -22,10 +22,7 @@ class SubmitInput extends FieldBase
         return $this;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function getValue()
+    public function getValue(): mixed
     {
         return $this->value;
     }

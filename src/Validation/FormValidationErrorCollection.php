@@ -12,7 +12,7 @@ class FormValidationErrorCollection implements IteratorAggregate, Countable
     /**
      * Wrapped errors, indexed by Id.
      *
-     * @var {string Error Id:Error}
+     * @var array<string, FormValidationError>
      */
     private array $errors = [];
 

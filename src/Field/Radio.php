@@ -43,10 +43,7 @@ class Radio extends FieldBase
         return $this;
     }
 
-    /**
-     * @param mixed $value
-     */
-    public function setInitialValue($value): self
+    public function setInitialValue(mixed $value): self
     {
         if (!$this->isSubmitted()) {
             $this->items->checkByValue($value);
@@ -55,10 +52,7 @@ class Radio extends FieldBase
         return parent::setInitialValue($value);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function submitValue($value): void
+    public function submitValue(mixed $value): void
     {
         $this->items->checkByValue($value);
 

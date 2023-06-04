@@ -46,10 +46,7 @@ abstract class FormBase
         return $field;
     }
 
-    /**
-     * @param mixed $value
-     */
-    public function setAttribute(string $key, $value): self
+    public function setAttribute(string $key, mixed $value): self
     {
         $this->getAttributes()->set($key, $value);
 
@@ -158,11 +155,9 @@ abstract class FormBase
     }
 
     /**
-     * @return mixed
-     *
      * @throws FormException
      */
-    public function getAttribute(string $name)
+    public function getAttribute(string $name): mixed
     {
         return $this->getAttributes()->get($name);
     }

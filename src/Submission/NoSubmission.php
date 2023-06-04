@@ -8,12 +8,9 @@ class NoSubmission implements SubmissionInterface
 {
     private FormValidationErrorCollection $errors;
 
-    private array $values;
-
-    public function __construct(array $values)
+    public function __construct(private readonly array $values)
     {
         $this->errors = new FormValidationErrorCollection([]);
-        $this->values = $values;
     }
 
     public function submitted(): bool

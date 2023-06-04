@@ -9,7 +9,7 @@ class FileUploadInput extends FieldBase
     public const FIELD_TYPE_ID = 'input.file';
 
     /**
-     * @var {string:null|string}
+     * @var array<string, null|string>
      */
     private array $initialValue = [
         'name'     => null,
@@ -20,18 +20,16 @@ class FileUploadInput extends FieldBase
     ];
 
     /**
-     * @var null|{string:string}
+     * @var null|array<string, string>
      */
-    private $submittedValue = null;
+    private ?array $submittedValue = null;
 
     private bool $submitted = false;
 
     /**
-     * @param mixed $value
-     *
      * @throws FormException
      */
-    public function setInitialValue($value): self
+    public function setInitialValue(mixed $value): self
     {
         if (!is_array($value)) {
             throw new FormException('Upload file input initial value must be an array.');
@@ -46,10 +44,7 @@ class FileUploadInput extends FieldBase
         return $this;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function submitValue($value): void
+    public function submitValue(mixed $value): void
     {
         if (is_array($value)) {
             foreach (array_keys($this->initialValue) as $key) {
@@ -63,7 +58,7 @@ class FileUploadInput extends FieldBase
     /**
      * {@inheritDoc}
      */
-    public function getValue()
+    public function getValue(): mixed
     {
         if ($this->submitted) {
             return $this->submittedValue;

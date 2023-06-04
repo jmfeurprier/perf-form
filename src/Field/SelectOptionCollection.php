@@ -4,6 +4,7 @@ namespace perf\Form\Field;
 
 use ArrayIterator;
 use IteratorAggregate;
+use Traversable;
 
 class SelectOptionCollection implements IteratorAggregate
 {
@@ -15,7 +16,7 @@ class SelectOptionCollection implements IteratorAggregate
     /**
      * {@inheritDoc}
      */
-    public function getIterator()
+    public function getIterator(): Traversable
     {
         return new ArrayIterator($this->options);
     }

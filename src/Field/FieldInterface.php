@@ -6,24 +6,15 @@ use perf\Form\Filtering\FilterInterface;
 
 interface FieldInterface
 {
-    /**
-     * @param mixed $value
-     */
-    public function setInitialValue($value): self;
+    public function setInitialValue(mixed $value): self;
 
     public function addFilter(FilterInterface $filter): self;
 
     public function setLabel(string $label): self;
 
-    /**
-     * @param mixed $value
-     */
-    public function setAttribute(string $key, $value): self;
+    public function setAttribute(string $key, mixed $value): self;
 
-    /**
-     * @param mixed $value
-     */
-    public function submitValue($value): void;
+    public function submitValue(mixed $value): void;
 
     public function submitNoValue(): void;
 
@@ -31,10 +22,7 @@ interface FieldInterface
 
     public function getName(): string;
 
-    /**
-     * @return mixed
-     */
-    public function getValue();
+    public function getValue(): mixed;
 
     public function getFieldTypeId(): string;
 
@@ -42,10 +30,7 @@ interface FieldInterface
 
     public function hasAttribute(string $name): bool;
 
-    /**
-     * @return mixed
-     */
-    public function getAttribute(string $name);
+    public function getAttribute(string $name): mixed;
 
     public function getAttributes(): array;
 }

@@ -5,12 +5,12 @@ namespace perf\Form\Filtering;
 class ReplacementFilter implements FilterInterface
 {
     /**
-     * @var {string:string}
+     * @var array<string, string>
      */
     private array $replacements = [];
 
     /**
-     * @param {string:string} $replacements
+     * @param array<string, string> $replacements
      */
     public function __construct(array $replacements)
     {
@@ -24,10 +24,7 @@ class ReplacementFilter implements FilterInterface
         $this->replacements[$search] = $replace;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function apply($value)
+    public function apply(mixed $value): mixed
     {
         $search  = array_keys($this->replacements);
         $replace = array_values($this->replacements);

@@ -8,19 +8,11 @@ use perf\Form\Filtering\FilterInterface;
 
 abstract class FieldBase implements FieldInterface
 {
-    private string $name;
-
     private AttributeCollection $attributes;
 
-    /**
-     * @var mixed
-     */
-    private $initialValue = '';
+    private mixed $initialValue = '';
 
-    /**
-     * @var null|mixed
-     */
-    private $submittedValue = null;
+    private mixed $submittedValue = null;
 
     private bool $submitted = false;
 
@@ -31,16 +23,12 @@ abstract class FieldBase implements FieldInterface
 
     private string $label = '';
 
-    public function __construct(string $name)
+    public function __construct(private readonly string $name)
     {
-        $this->name       = $name;
         $this->attributes = new AttributeCollection();
     }
 
-    /**
-     * @param mixed $value
-     */
-    public function setInitialValue($value): self
+    public function setInitialValue(mixed $value): self
     {
         $this->initialValue = $value;
 
@@ -61,20 +49,14 @@ abstract class FieldBase implements FieldInterface
         return $this;
     }
 
-    /**
-     * @param mixed $value
-     */
-    public function setAttribute(string $key, $value): self
+    public function setAttribute(string $key, mixed $value): self
     {
         $this->attributes->set($key, $value);
 
         return $this;
     }
 
-    /**
-     * @param mixed $value
-     */
-    public function submitValue($value): void
+    public function submitValue(mixed $value): void
     {
         foreach ($this->filters as $filter) {
             $value = $filter->apply($value);
@@ -101,10 +83,7 @@ abstract class FieldBase implements FieldInterface
         return $this->name;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getValue()
+    public function getValue(): mixed
     {
         if ($this->isSubmitted()) {
             return $this->getSubmittedValue();
@@ -113,18 +92,12 @@ abstract class FieldBase implements FieldInterface
         return $this->getInitialValue();
     }
 
-    /**
-     * @return mixed
-     */
-    protected function getSubmittedValue()
+    protected function getSubmittedValue(): mixed
     {
         return $this->submittedValue;
     }
 
-    /**
-     * @return mixed
-     */
-    protected function getInitialValue()
+    protected function getInitialValue(): mixed
     {
         return $this->initialValue;
     }
@@ -136,10 +109,8 @@ abstract class FieldBase implements FieldInterface
 
     /**
      * Default implementation.
-     *
-     * @return mixed
      */
-    protected function getEmptyValue()
+    protected function getEmptyValue(): mixed
     {
         return '';
     }
@@ -160,11 +131,9 @@ abstract class FieldBase implements FieldInterface
     }
 
     /**
-     * @return mixed
-     *
      * @throws FormException
      */
-    public function getAttribute(string $name)
+    public function getAttribute(string $name): mixed
     {
         return $this->attributes->get($name);
     }

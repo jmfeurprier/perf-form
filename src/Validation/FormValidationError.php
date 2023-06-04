@@ -6,8 +6,6 @@ use perf\Form\Exception\FormException;
 
 class FormValidationError
 {
-    private string $id;
-
     private ?string $message = null;
 
     private ?string $fieldName = null;
@@ -15,13 +13,11 @@ class FormValidationError
     /**
      * @throws FormException
      */
-    public function __construct(string $id)
+    public function __construct(private readonly string $id)
     {
         if ('' === $id) {
             throw new FormException('Form validation error Id cannot be an empty string.');
         }
-
-        $this->id = $id;
     }
 
     public function getId(): string
