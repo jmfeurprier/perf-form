@@ -15,7 +15,7 @@ class FileUploadInputTest extends TestCase
         $this->assertSame(FileUploadInput::FIELD_TYPE_ID, $field->getFieldTypeId());
     }
 
-    protected function createField($name)
+    protected function createField($name): FileUploadInput
     {
         return new FileUploadInput($name);
     }

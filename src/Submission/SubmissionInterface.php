@@ -12,5 +12,8 @@ interface SubmissionInterface
 
     public function getErrors(): FormValidationErrorCollection;
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getValues(): array;
 }

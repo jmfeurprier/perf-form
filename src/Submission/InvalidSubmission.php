@@ -4,11 +4,14 @@ namespace perf\Form\Submission;
 
 use perf\Form\Validation\FormValidationErrorCollection;
 
-class InvalidSubmission implements SubmissionInterface
+readonly class InvalidSubmission implements SubmissionInterface
 {
+    /**
+     * @param array<string, mixed> $values
+     */
     public function __construct(
-        private readonly FormValidationErrorCollection $errors,
-        private readonly array $values
+        private FormValidationErrorCollection $errors,
+        private array $values
     ) {
     }
 

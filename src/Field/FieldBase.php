@@ -117,7 +117,11 @@ abstract class FieldBase implements FieldInterface
 
     public function getFieldTypeId(): string
     {
-        return static::FIELD_TYPE_ID;
+        if (defined('static::FIELD_TYPE_ID')) {
+            return static::FIELD_TYPE_ID;
+        }
+
+        throw new \LogicException("Field class constant 'FIELD_TYPE_ID' must be defined.");
     }
 
     public function getLabel(): string

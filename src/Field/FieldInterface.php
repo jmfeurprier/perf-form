@@ -32,5 +32,8 @@ interface FieldInterface
 
     public function getAttribute(string $name): mixed;
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getAttributes(): array;
 }

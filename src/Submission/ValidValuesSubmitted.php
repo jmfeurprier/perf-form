@@ -4,13 +4,14 @@ namespace perf\Form\Submission;
 
 use perf\Form\Validation\FormValidationErrorCollection;
 
-class ValidValuesSubmitted implements SubmissionInterface
+readonly class ValidValuesSubmitted implements SubmissionInterface
 {
-    private FormValidationErrorCollection $errors;
-
-    public function __construct(private readonly array $values)
-    {
-        $this->errors = new FormValidationErrorCollection([]);
+    /**
+     * @param array<string, mixed> $values
+     */
+    public function __construct(
+        private array $values
+    ) {
     }
 
     public function submitted(): bool
@@ -25,9 +26,12 @@ class ValidValuesSubmitted implements SubmissionInterface
 
     public function getErrors(): FormValidationErrorCollection
     {
-        return $this->errors;
+        return FormValidationErrorCollection::empty();
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getValues(): array
     {
         return $this->values;

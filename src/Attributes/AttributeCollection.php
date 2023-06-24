@@ -5,8 +5,12 @@ namespace perf\Form\Attributes;
 use ArrayIterator;
 use IteratorAggregate;
 use perf\Form\Exception\FormException;
+use perf\Form\Field\RadioItem;
 use Traversable;
 
+/**
+ * @implements IteratorAggregate<string, mixed>
+ */
 class AttributeCollection implements IteratorAggregate
 {
     /**

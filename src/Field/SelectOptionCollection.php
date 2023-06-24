@@ -6,6 +6,9 @@ use ArrayIterator;
 use IteratorAggregate;
 use Traversable;
 
+/**
+ * @implements IteratorAggregate<SelectOption>
+ */
 class SelectOptionCollection implements IteratorAggregate
 {
     /**

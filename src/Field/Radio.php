@@ -49,7 +49,9 @@ class Radio extends FieldBase
             $this->items->checkByValue($value);
         }
 
-        return parent::setInitialValue($value);
+        parent::setInitialValue($value);
+
+        return $this;
     }
 
     public function submitValue(mixed $value): void

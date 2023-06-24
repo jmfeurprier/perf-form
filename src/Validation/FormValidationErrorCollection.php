@@ -7,6 +7,9 @@ use Countable;
 use IteratorAggregate;
 use Traversable;
 
+/**
+ * @implements IteratorAggregate<string, FormValidationError>
+ */
 class FormValidationErrorCollection implements IteratorAggregate, Countable
 {
     /**
@@ -16,19 +19,32 @@ class FormValidationErrorCollection implements IteratorAggregate, Countable
      */
     private array $errors = [];
 
+    public static function empty(): self
+    {
+        return new self([]);
+    }
+
     /**
      * @param FormValidationError[] $errors
      */
-    public function __construct(array $errors = [])
+    public function __construct(array $errors)
     {
         foreach ($errors as $error) {
-            $this->add($error);
+            $this->addError($error);
         }
     }
 
-    public function add(FormValidationError $error): void
+    private function addError(FormValidationError $error): void
     {
         $this->errors[$error->getId()] = $error;
+    }
+
+    public function add(FormValidationError $error): self
+    {
+        $errors   = $this->errors;
+        $errors[] = $error;
+
+        return new self($errors);
     }
 
     /**

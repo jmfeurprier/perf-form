@@ -7,6 +7,9 @@ use IteratorAggregate;
 use perf\Form\Exception\FormException;
 use Traversable;
 
+/**
+ * @implements IteratorAggregate<string, FieldInterface>
+ */
 class FieldCollection implements IteratorAggregate
 {
     /**
@@ -62,6 +65,9 @@ class FieldCollection implements IteratorAggregate
         return $this;
     }
 
+    /**
+     * @param array<string, mixed> $values
+     */
     public function setInitialValues(array $values): self
     {
         foreach ($this->fields as $field) {
@@ -77,6 +83,9 @@ class FieldCollection implements IteratorAggregate
         return $this;
     }
 
+    /**
+     * @param array<string, mixed> $values
+     */
     public function submitValues(array $values): self
     {
         foreach ($this->fields as $field) {
@@ -96,6 +105,9 @@ class FieldCollection implements IteratorAggregate
         return $this;
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getValues(): array
     {
         $values = [];

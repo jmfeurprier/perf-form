@@ -53,9 +53,12 @@ abstract class FormBase
         return $this;
     }
 
+    /**
+     * @param array<string, mixed> $submittedValues
+     */
     public function submit(array $submittedValues = []): SubmissionInterface
     {
-        $this->errors = new FormValidationErrorCollection();
+        $this->errors = FormValidationErrorCollection::empty();
 
         if (!$this->isSubmittable($submittedValues)) {
             return new NoSubmission($this->getValues());
@@ -81,6 +84,8 @@ abstract class FormBase
 
     /**
      * Default implementation.
+     *
+     * @param array<string, mixed> $submittedValues
      */
     protected function isSubmittable(array $submittedValues): bool
     {
@@ -89,6 +94,8 @@ abstract class FormBase
 
     /**
      * Default implementation.
+     *
+     * @param array<string, mixed> $values
      */
     protected function validate(array $values): void
     {
@@ -101,13 +108,15 @@ abstract class FormBase
     {
         $error = new FormValidationError($id);
 
-        $this->errors->add($error);
+        $this->errors = $this->errors->add($error);
 
         return $error;
     }
 
     /**
      * Default implementation.
+     *
+     * @param array<string, mixed> $values
      */
     protected function onValid(array $values): void
     {
@@ -115,6 +124,8 @@ abstract class FormBase
 
     /**
      * Default implementation.
+     *
+     * @param array<string, mixed> $values
      */
     protected function onInvalid(array $values): void
     {
@@ -130,6 +141,9 @@ abstract class FormBase
         return $this->action;
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getValues(): array
     {
         return $this->getFields()->getValues();

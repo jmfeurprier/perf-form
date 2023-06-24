@@ -6,6 +6,9 @@ use ArrayIterator;
 use IteratorAggregate;
 use Traversable;
 
+/**
+ * @implements IteratorAggregate<RadioItem>
+ */
 class RadioItemCollection implements IteratorAggregate
 {
     /**
