@@ -71,7 +71,9 @@ class FormValidationErrorCollection implements IteratorAggregate, Countable
         $messages = [];
 
         foreach ($this->errors as $error) {
-            $messages[] = $error->getMessage();
+            if (null !== $error->getMessage()) {
+                $messages[] = $error->getMessage();
+            }
         }
 
         return $messages;
