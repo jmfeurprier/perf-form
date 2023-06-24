@@ -53,7 +53,7 @@ class RadioItemCollection implements IteratorAggregate
         $this->items[] = $item;
     }
 
-    public function checkByValue(string $value): void
+    public function checkByValue(mixed $value): void
     {
         $checked = false;
 

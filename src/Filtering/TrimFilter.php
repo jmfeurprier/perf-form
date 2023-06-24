@@ -21,10 +21,14 @@ class TrimFilter implements FilterInterface
     ) {
     }
 
-    public function apply(mixed $value): string
+    public function apply(mixed $value): mixed
     {
-        $trimmableCharacters = join($this->trimmableCharacters);
+        if (is_string($value)) {
+            $trimmableCharacters = join($this->trimmableCharacters);
 
-        return trim($value, $trimmableCharacters);
+            return trim($value, $trimmableCharacters);
+        }
+
+        return $value;
     }
 }

@@ -53,7 +53,7 @@ class SelectOptionCollection implements IteratorAggregate
         $this->options[] = $option;
     }
 
-    public function selectOptionByValue(string $value): void
+    public function selectOptionByValue(mixed $value): void
     {
         $selected = false;
 

@@ -13,8 +13,12 @@ class UppercaseFilter implements FilterInterface
         $this->encoding = $encoding;
     }
 
-    public function apply(mixed $value): string
+    public function apply(mixed $value): mixed
     {
-        return mb_strtoupper($value, $this->encoding);
+        if (is_string($value)) {
+            return mb_strtoupper($value, $this->encoding);
+        }
+
+        return $value;
     }
 }

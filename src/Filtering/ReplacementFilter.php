@@ -26,9 +26,13 @@ class ReplacementFilter implements FilterInterface
 
     public function apply(mixed $value): mixed
     {
-        $search  = array_keys($this->replacements);
-        $replace = array_values($this->replacements);
+        if (is_string($value)) {
+            $search  = array_keys($this->replacements);
+            $replace = array_values($this->replacements);
 
-        return str_replace($search, $replace, $value);
+            return str_replace($search, $replace, $value);
+        }
+
+        return $value;
     }
 }
