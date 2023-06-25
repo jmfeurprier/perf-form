@@ -6,20 +6,20 @@ use perf\Form\Exception\FormException;
 
 class Checkbox extends FieldBase
 {
-    public const FIELD_TYPE_ID = 'input.checkbox';
+    final public const FIELD_TYPE_ID = 'input.checkbox';
 
     private string $checkedValue = '1';
 
     private string $uncheckedValue = '0';
 
-    public function setCheckedValue(string $value): self
+    public function setCheckedValue(string $value): static
     {
         $this->checkedValue = $value;
 
         return $this;
     }
 
-    public function setUncheckedValue(string $value): self
+    public function setUncheckedValue(string $value): static
     {
         $this->uncheckedValue = $value;
 

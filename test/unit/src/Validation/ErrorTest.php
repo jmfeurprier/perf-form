@@ -7,14 +7,14 @@ use PHPUnit\Framework\TestCase;
 
 class ErrorTest extends TestCase
 {
-    public function testWithEmptyIdWillThrowException()
+    public function testWithEmptyIdWillThrowException(): void
     {
         $this->expectException(FormException::class);
 
         new FormValidationError('');
     }
 
-    public function testGetId()
+    public function testGetId(): void
     {
         $id = 'foo';
 
@@ -23,7 +23,7 @@ class ErrorTest extends TestCase
         $this->assertSame($id, $error->getId());
     }
 
-    public function testGetMessageReturnsNull()
+    public function testGetMessageReturnsNull(): void
     {
         $id = 'foo';
 
@@ -32,7 +32,7 @@ class ErrorTest extends TestCase
         $this->assertNull($error->getMessage());
     }
 
-    public function testGetMessageReturnsExpected()
+    public function testGetMessageReturnsExpected(): void
     {
         $id      = 'foo';
         $message = 'bar';
@@ -43,7 +43,7 @@ class ErrorTest extends TestCase
         $this->assertSame($message, $error->getMessage());
     }
 
-    public function testWithEmptyMessageWillThrowException()
+    public function testWithEmptyMessageWillThrowException(): void
     {
         $id = 'foo';
 
@@ -54,7 +54,7 @@ class ErrorTest extends TestCase
         $error->setMessage('');
     }
 
-    public function testGetFieldNameReturnsNull()
+    public function testGetFieldNameReturnsNull(): void
     {
         $id = 'foo';
 
@@ -63,7 +63,7 @@ class ErrorTest extends TestCase
         $this->assertNull($error->getFieldName());
     }
 
-    public function testGetFieldNameReturnsExpected()
+    public function testGetFieldNameReturnsExpected(): void
     {
         $id        = 'foo';
         $fieldName = 'bar';
@@ -74,7 +74,7 @@ class ErrorTest extends TestCase
         $this->assertSame($fieldName, $error->getFieldName());
     }
 
-    public function testWithEmptyFieldNameWillThrowException()
+    public function testWithEmptyFieldNameWillThrowException(): void
     {
         $id = 'foo';
 

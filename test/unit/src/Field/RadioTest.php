@@ -4,7 +4,7 @@ namespace perf\Form\Field;
 
 class RadioTest extends FieldTestBase
 {
-    public function testGetFieldTypeId()
+    public function testGetFieldTypeId(): void
     {
         $name = 'foo';
 
@@ -13,7 +13,7 @@ class RadioTest extends FieldTestBase
         $this->assertSame(Radio::FIELD_TYPE_ID, $field->getFieldTypeId());
     }
 
-    protected function createField(string $name)
+    protected function createField(string $name): Radio
     {
         return new Radio($name);
     }

@@ -4,16 +4,14 @@ namespace perf\Form\Field;
 
 class RadioItem
 {
-    private string $value;
-
     private string $label;
 
     private bool $checked = false;
 
-    public function __construct(string $value, string $label = '')
-    {
-        $this->value = $value;
-
+    public function __construct(
+        private readonly string $value,
+        string $label = ''
+    ) {
         $this->setLabel($label);
     }
 

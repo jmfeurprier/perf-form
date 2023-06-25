@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 
 class CheckboxTest extends TestCase
 {
-    public function testGetFieldTypeId()
+    public function testGetFieldTypeId(): void
     {
         $name = 'foo';
 
@@ -15,7 +15,7 @@ class CheckboxTest extends TestCase
         $this->assertSame(Checkbox::FIELD_TYPE_ID, $field->getFieldTypeId());
     }
 
-    public function testIsCheckedDefault()
+    public function testIsCheckedDefault(): void
     {
         $name = 'foo';
 
@@ -24,28 +24,61 @@ class CheckboxTest extends TestCase
         $this->assertFalse($field->isChecked());
     }
 
-    public static function dataProviderIsCheckedReturnsFalse()
+    /**
+     * @return array<mixed[]>
+     */
+    public static function dataProviderIsCheckedReturnsFalse(): array
     {
         return [
-            ['1', '0', '0', null],
-            ['1', '0', '0', '0'],
-            ['1', '0', '0', '2'],
-            ['1', '0', '1', '0'],
-            ['0', '1', '0', '1'],
+            [
+                '1',
+                '0',
+                '0',
+                null,
+            ],
+            [
+                '1',
+                '0',
+                '0',
+                '0',
+            ],
+            [
+                '1',
+                '0',
+                '0',
+                '2',
+            ],
+            [
+                '1',
+                '0',
+                '1',
+                '0',
+            ],
+            [
+                '0',
+                '1',
+                '0',
+                '1',
+            ],
         ];
     }
 
     /**
      * @dataProvider dataProviderIsCheckedReturnsFalse
      */
-    public function testIsCheckedReturnsFalse($checkedValue, $uncheckedValue, $initialValue, $submittedValue)
-    {
+    public function testIsCheckedReturnsFalse(
+        string $checkedValue,
+        string $uncheckedValue,
+        string $initialValue,
+        ?string $submittedValue
+    ): void {
         $name = 'foo';
 
         $field = $this->createField($name)
             ->setCheckedValue($checkedValue)
             ->setUncheckedValue($uncheckedValue)
-            ->setInitialValue($initialValue);
+            ->setInitialValue($initialValue)
+        ;
 
         $field->submitValue($submittedValue);
 
@@ -53,28 +86,61 @@ class CheckboxTest extends TestCase
         $this->assertSame($uncheckedValue, $field->getValue());
     }
 
-    public static function dataProviderIsCheckedReturnsTrue()
+    /**
+     * @return array<mixed[]>
+     */
+    public static function dataProviderIsCheckedReturnsTrue(): array
     {
         return [
-            ['1', '0', '0', '1'],
-            ['1', '0', '1', '1'],
-            ['0', '1', '0', '0'],
-            ['0', '1', '1', '0'],
-            ['2', '0', '0', '2'],
+            [
+                '1',
+                '0',
+                '0',
+                '1',
+            ],
+            [
+                '1',
+                '0',
+                '1',
+                '1',
+            ],
+            [
+                '0',
+                '1',
+                '0',
+                '0',
+            ],
+            [
+                '0',
+                '1',
+                '1',
+                '0',
+            ],
+            [
+                '2',
+                '0',
+                '0',
+                '2',
+            ],
         ];
     }
 
     /**
      * @dataProvider dataProviderIsCheckedReturnsTrue
      */
-    public function testIsCheckedReturnsTrue($checkedValue, $uncheckedValue, $initialValue, $submittedValue)
-    {
+    public function testIsCheckedReturnsTrue(
+        string $checkedValue,
+        string $uncheckedValue,
+        string $initialValue,
+        string $submittedValue
+    ): void {
         $name = 'foo';
 
         $field = $this->createField($name)
             ->setCheckedValue($checkedValue)
             ->setUncheckedValue($uncheckedValue)
-            ->setInitialValue($initialValue);
+            ->setInitialValue($initialValue)
+        ;
 
         $field->submitValue($submittedValue);
 
@@ -82,7 +148,7 @@ class CheckboxTest extends TestCase
         $this->assertSame($checkedValue, $field->getValue());
     }
 
-    protected function createField($name)
+    protected function createField(string $name): Checkbox
     {
         return new Checkbox($name);
     }

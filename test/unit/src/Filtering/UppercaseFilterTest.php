@@ -13,7 +13,7 @@ class UppercaseFilterTest extends TestCase
         $this->filter = new UppercaseFilter();
     }
 
-    public function testApply()
+    public function testApply(): void
     {
         $value = 'foo';
 

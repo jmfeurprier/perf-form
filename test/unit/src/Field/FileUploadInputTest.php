@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 
 class FileUploadInputTest extends TestCase
 {
-    public function testGetFieldTypeId()
+    public function testGetFieldTypeId(): void
     {
         $name = 'foo';
 
@@ -15,7 +15,7 @@ class FileUploadInputTest extends TestCase
         $this->assertSame(FileUploadInput::FIELD_TYPE_ID, $field->getFieldTypeId());
     }
 
-    protected function createField($name): FileUploadInput
+    protected function createField(string $name): FileUploadInput
     {
         return new FileUploadInput($name);
     }

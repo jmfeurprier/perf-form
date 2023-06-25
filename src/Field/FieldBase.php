@@ -2,13 +2,14 @@
 
 namespace perf\Form\Field;
 
+use LogicException;
 use perf\Form\Attributes\AttributeCollection;
 use perf\Form\Exception\FormException;
 use perf\Form\Filtering\FilterInterface;
 
 abstract class FieldBase implements FieldInterface
 {
-    private AttributeCollection $attributes;
+    private readonly AttributeCollection $attributes;
 
     private mixed $initialValue = '';
 
@@ -28,28 +29,28 @@ abstract class FieldBase implements FieldInterface
         $this->attributes = new AttributeCollection();
     }
 
-    public function setInitialValue(mixed $value): self
+    public function setInitialValue(mixed $value): static
     {
         $this->initialValue = $value;
 
         return $this;
     }
 
-    public function addFilter(FilterInterface $filter): self
+    public function addFilter(FilterInterface $filter): static
     {
         $this->filters[] = $filter;
 
         return $this;
     }
 
-    public function setLabel(string $label): self
+    public function setLabel(string $label): static
     {
         $this->label = $label;
 
         return $this;
     }
 
-    public function setAttribute(string $key, mixed $value): self
+    public function setAttribute(string $key, mixed $value): static
     {
         $this->attributes->set($key, $value);
 
@@ -121,7 +122,7 @@ abstract class FieldBase implements FieldInterface
             return static::FIELD_TYPE_ID;
         }
 
-        throw new \LogicException("Field class constant 'FIELD_TYPE_ID' must be defined.");
+        throw new LogicException("Field class constant 'FIELD_TYPE_ID' must be defined.");
     }
 
     public function getLabel(): string

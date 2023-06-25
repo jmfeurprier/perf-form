@@ -6,13 +6,13 @@ use perf\Form\Filtering\FilterInterface;
 
 interface FieldInterface
 {
-    public function setInitialValue(mixed $value): self;
+    public function setInitialValue(mixed $value): static;
 
-    public function addFilter(FilterInterface $filter): self;
+    public function addFilter(FilterInterface $filter): static;
 
-    public function setLabel(string $label): self;
+    public function setLabel(string $label): static;
 
-    public function setAttribute(string $key, mixed $value): self;
+    public function setAttribute(string $key, mixed $value): static;
 
     public function submitValue(mixed $value): void;
 

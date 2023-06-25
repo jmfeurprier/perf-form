@@ -4,7 +4,7 @@ namespace perf\Form\Field;
 
 class SubmitInput extends FieldBase
 {
-    public const FIELD_TYPE_ID = 'input.submit';
+    final public const FIELD_TYPE_ID = 'input.submit';
 
     private string $value;
 

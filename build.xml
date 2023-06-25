@@ -17,7 +17,7 @@
 		<phplint haltonfailure="true">
 			<fileset dir="${rootdir}">
 				<include name="src/" />
-				<include name="test/unit/" />
+				<include name="tests/unit/**/*.php" />
 			</fileset>
 		</phplint>
 	</target>

@@ -6,7 +6,7 @@ use perf\Form\Exception\FormException;
 
 class FileUploadInput extends FieldBase
 {
-    public const FIELD_TYPE_ID = 'input.file';
+    final public const FIELD_TYPE_ID = 'input.file';
 
     /**
      * @var array<string, null|string>
@@ -29,7 +29,7 @@ class FileUploadInput extends FieldBase
     /**
      * @throws FormException
      */
-    public function setInitialValue(mixed $value): self
+    public function setInitialValue(mixed $value): static
     {
         if (!is_array($value)) {
             throw new FormException('Upload file input initial value must be an array.');

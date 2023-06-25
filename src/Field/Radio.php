@@ -4,9 +4,9 @@ namespace perf\Form\Field;
 
 class Radio extends FieldBase
 {
-    public const FIELD_TYPE_ID = 'input.radio';
+    final public const FIELD_TYPE_ID = 'input.radio';
 
-    private RadioItemCollection $items;
+    private readonly RadioItemCollection $items;
 
     public function __construct(string $name)
     {
@@ -43,7 +43,7 @@ class Radio extends FieldBase
         return $this;
     }
 
-    public function setInitialValue(mixed $value): self
+    public function setInitialValue(mixed $value): static
     {
         if (!$this->isSubmitted()) {
             $this->items->checkByValue($value);

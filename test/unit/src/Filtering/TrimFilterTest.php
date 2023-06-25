@@ -13,7 +13,7 @@ class TrimFilterTest extends TestCase
         $this->filter = new TrimFilter();
     }
 
-    public function testApply()
+    public function testApply(): void
     {
         $value = ' foo ';
 

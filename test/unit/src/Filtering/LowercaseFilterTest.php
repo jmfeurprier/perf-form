@@ -13,7 +13,7 @@ class LowercaseFilterTest extends TestCase
         $this->filter = new LowercaseFilter();
     }
 
-    public function testApply()
+    public function testApply(): void
     {
         $value = 'FOO';
 

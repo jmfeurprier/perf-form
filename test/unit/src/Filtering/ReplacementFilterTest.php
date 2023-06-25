@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 
 class ReplacementFilterTest extends TestCase
 {
-    public function testApply()
+    public function testApply(): void
     {
         $replacements = [
             'foo' => 'bar',

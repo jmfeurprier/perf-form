@@ -4,7 +4,7 @@ namespace perf\Form\Field;
 
 class HiddenInput extends FieldBase
 {
-    public const FIELD_TYPE_ID = 'input.hidden';
+    final public const FIELD_TYPE_ID = 'input.hidden';
 
     public function __construct(
         string $name,

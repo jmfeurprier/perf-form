@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 
 abstract class FieldTestBase extends TestCase
 {
-    public function testGetName()
+    public function testGetName(): void
     {
         $name = 'foo';
 
@@ -16,7 +16,7 @@ abstract class FieldTestBase extends TestCase
         $this->assertSame($name, $field->getName());
     }
 
-    public function testGetValueWithInitialValue()
+    public function testGetValueWithInitialValue(): void
     {
         $name         = 'foo';
         $initialValue = 'bar';
@@ -27,7 +27,7 @@ abstract class FieldTestBase extends TestCase
         $this->assertSame($initialValue, $field->getValue());
     }
 
-    public function testGetValueWithSubmittedValue()
+    public function testGetValueWithSubmittedValue(): void
     {
         $name           = 'foo';
         $initialValue   = 'bar';
@@ -40,7 +40,7 @@ abstract class FieldTestBase extends TestCase
         $this->assertSame($submittedValue, $field->getValue());
     }
 
-    public function testGetValueWithInitialValueAndFilterDoesNotModifyValue()
+    public function testGetValueWithInitialValueAndFilterDoesNotModifyValue(): void
     {
         $name         = 'foo';
         $initialValue = 'bar';
@@ -55,7 +55,7 @@ abstract class FieldTestBase extends TestCase
         $this->assertSame($initialValue, $field->getValue());
     }
 
-    public function testGetValueWithSubmittedValueAndFilterModifiesValue()
+    public function testGetValueWithSubmittedValueAndFilterModifiesValue(): void
     {
         $name           = 'foo';
         $initialValue   = 'bar';
@@ -75,7 +75,7 @@ abstract class FieldTestBase extends TestCase
         $this->assertSame($filteredValue, $field->getValue());
     }
 
-    public function testResetReAssignsInitialValue()
+    public function testResetReAssignsInitialValue(): void
     {
         $name           = 'foo';
         $initialValue   = 'bar';
@@ -89,7 +89,7 @@ abstract class FieldTestBase extends TestCase
         $this->assertSame($initialValue, $field->getValue());
     }
 
-    public function testGetFieldTypeId()
+    public function testGetFieldTypeId(): void
     {
         $name = 'foo';
 
@@ -98,5 +98,5 @@ abstract class FieldTestBase extends TestCase
         $this->assertSame(TextInput::FIELD_TYPE_ID, $field->getFieldTypeId());
     }
 
-    abstract protected function createField(string $name);
+    abstract protected function createField(string $name): FieldInterface;
 }

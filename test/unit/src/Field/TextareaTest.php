@@ -4,7 +4,7 @@ namespace perf\Form\Field;
 
 class TextareaTest extends FieldTestBase
 {
-    public function testGetFieldTypeId()
+    public function testGetFieldTypeId(): void
     {
         $name = 'foo';
 
@@ -13,7 +13,7 @@ class TextareaTest extends FieldTestBase
         $this->assertSame(Textarea::FIELD_TYPE_ID, $field->getFieldTypeId());
     }
 
-    protected function createField(string $name)
+    protected function createField(string $name): Textarea
     {
         return new Textarea($name);
     }

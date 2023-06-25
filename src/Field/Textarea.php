@@ -4,7 +4,7 @@ namespace perf\Form\Field;
 
 class Textarea extends FieldBase
 {
-    public const FIELD_TYPE_ID = 'textarea';
+    final public const FIELD_TYPE_ID = 'textarea';
 
     public function setRowCount(int $count): self
     {

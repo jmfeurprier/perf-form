@@ -4,7 +4,7 @@ namespace perf\Form\Field;
 
 class TextInputTest extends FieldTestBase
 {
-    public function testGetFieldTypeId()
+    public function testGetFieldTypeId(): void
     {
         $name = 'foo';
 
@@ -13,7 +13,7 @@ class TextInputTest extends FieldTestBase
         $this->assertSame(TextInput::FIELD_TYPE_ID, $field->getFieldTypeId());
     }
 
-    protected function createField($name)
+    protected function createField(string $name): TextInput
     {
         return new TextInput($name);
     }

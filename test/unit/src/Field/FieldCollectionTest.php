@@ -14,14 +14,14 @@ class FieldCollectionTest extends TestCase
         $this->collection = new FieldCollection();
     }
 
-    public function testHasWithUnknownNameWillReturnFalse()
+    public function testHasWithUnknownNameWillReturnFalse(): void
     {
         $name = 'foo';
 
         $this->assertFalse($this->collection->has($name));
     }
 
-    public function testHasWithKnownNameWillReturnTrue()
+    public function testHasWithKnownNameWillReturnTrue(): void
     {
         $name = 'foo';
 
@@ -33,7 +33,7 @@ class FieldCollectionTest extends TestCase
         $this->assertTrue($this->collection->has($name));
     }
 
-    public function testGetWithUnknownNameWillThrowException()
+    public function testGetWithUnknownNameWillThrowException(): void
     {
         $name = 'foo';
 
@@ -42,7 +42,7 @@ class FieldCollectionTest extends TestCase
         $this->collection->get($name);
     }
 
-    public function testGetWithKnownNameWillReturnExpectedField()
+    public function testGetWithKnownNameWillReturnExpectedField(): void
     {
         $name = 'foo';
 

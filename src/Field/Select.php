@@ -4,9 +4,9 @@ namespace perf\Form\Field;
 
 class Select extends FieldBase
 {
-    public const FIELD_TYPE_ID = 'select';
+    final public const FIELD_TYPE_ID = 'select';
 
-    private SelectOptionCollection $options;
+    private readonly SelectOptionCollection $options;
 
     public function __construct(
         string $name,
@@ -45,7 +45,7 @@ class Select extends FieldBase
         return $this;
     }
 
-    public function setInitialValue(mixed $value): self
+    public function setInitialValue(mixed $value): static
     {
         if (!$this->isSubmitted()) {
             $this->selectOptions($value);
