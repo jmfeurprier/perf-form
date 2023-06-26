@@ -13,6 +13,9 @@ use perf\Form\Submission\ValidValuesSubmitted;
 use perf\Form\Validation\FormValidationError;
 use perf\Form\Validation\FormValidationErrorCollection;
 
+/**
+ * @psalm-type Values = array<string, mixed>
+ */
 abstract class FormBase
 {
     private string $method = 'post';
@@ -54,7 +57,7 @@ abstract class FormBase
     }
 
     /**
-     * @param array<string, mixed> $submittedValues
+     * @psalm-param Values $submittedValues
      */
     public function submit(array $submittedValues = []): SubmissionInterface
     {
@@ -85,7 +88,7 @@ abstract class FormBase
     /**
      * Default implementation.
      *
-     * @param array<string, mixed> $submittedValues
+     * @psalm-param Values $submittedValues
      */
     protected function isSubmittable(array $submittedValues): bool
     {
@@ -95,7 +98,7 @@ abstract class FormBase
     /**
      * Default implementation.
      *
-     * @param array<string, mixed> $values
+     * @psalm-param Values $values
      */
     protected function validate(array $values): void
     {
@@ -116,7 +119,7 @@ abstract class FormBase
     /**
      * Default implementation.
      *
-     * @param array<string, mixed> $values
+     * @psalm-param Values $values
      */
     protected function onValid(array $values): void
     {
@@ -125,7 +128,7 @@ abstract class FormBase
     /**
      * Default implementation.
      *
-     * @param array<string, mixed> $values
+     * @psalm-param Values $values
      */
     protected function onInvalid(array $values): void
     {
@@ -142,7 +145,7 @@ abstract class FormBase
     }
 
     /**
-     * @return array<string, mixed>
+     * @psalm-return Values
      */
     public function getValues(): array
     {
